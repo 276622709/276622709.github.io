@@ -25,7 +25,7 @@ tags:
 4.使用git commit命令告诉git把文件提交到仓库(这里为copy远程文件到问题，因此返回内容提示nothing to commit)  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_commit.png)  
 5.找到需要pull的项目地址  
-![](https://github.com/276622709/276622709.github.io/blob/master/img/github/find_pull_project_address)  
+![](https://github.com/276622709/276622709.github.io/blob/master/img/github/find_pull_project_address.png)  
 6.添加需要pull的项目地址  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/pull_data.png)  
 7.pull远程数据到本地  
