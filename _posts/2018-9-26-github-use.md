@@ -21,13 +21,13 @@ tags:
 初始化git  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_init.png)  
 3.把文件添加到暂存区里去(add后面有个点,意为当前文件夹下的所有文件)  
-![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_add.png)  
+![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_add_cache.png)  
 4.使用git commit命令告诉git把文件提交到仓库(这里为copy远程文件到问题，因此返回内容提示nothing to commit)  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_commit.png)  
 5.找到需要pull的项目地址  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/find_pull_project_address.png)  
 6.添加需要pull的项目地址  
-![](https://github.com/276622709/276622709.github.io/blob/master/img/github/pull_data.png)  
+![](https://github.com/276622709/276622709.github.io/blob/master/img/github/add_remote_address.png)  
 7.pull远程数据到本地  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/pull_data.png)  
 8.完成上面命令后项目文件就下载到当前目录下了  
@@ -39,6 +39,6 @@ tags:
 9.git commit后提示下面信息  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_commit_post_info.png)  
 10.然后使用git push上传  
-![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_push.png)  
+![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_push_order.png)  
 11.填写账号和密码信息，成功连接后，同步信息如下  
-![](https://github.com/276622709/276622709.github.io/blob/master/img/github/)  
+![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_push_info.png)  
