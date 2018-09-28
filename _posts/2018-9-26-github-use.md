@@ -1,13 +1,12 @@
 ---
-layout:post
-title:初步使用github的pull和push功能
-date:2018-9-28
-author:ZMY
+layout: post
+title: 初步使用github的pull和push功能
+date: 2018-9-28
+author: ZMY
 header-img: img/post-bg-universe.jpg
 tags:
     - github
 ---
-
 ## github初步使用教程
 ### 目的
 通过github的pull和push功能，将之前fork的项目里的文件批量删除，并同步  
