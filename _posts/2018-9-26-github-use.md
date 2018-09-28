@@ -41,4 +41,4 @@ tags:
 10.然后使用git push上传  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_push_order.png)  
 11.填写账号和密码信息，成功连接后，同步信息如下  
-![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_push_info.png)  
+![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_push_return_info.png)  
