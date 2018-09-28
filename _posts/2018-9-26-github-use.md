@@ -29,7 +29,7 @@ tags:
 6.完成上面命令后项目文件就下载到当前目录下了  
 修改文件后，同步本地仓库到远端使用git push命令  
 实际上是把当前分支master推送到远程。执行此命令后会要求输入用户名、密码，验证通过后即开始上传。  
-在上传之前需要使用git add命令将目录下修改的内容添加进暂存区中(-A可以同步删除的文件，不加-A只包括修改和新增的文件)
+在上传之前需要使用git add命令将目录下修改的内容添加进暂存区中(-A可以同步删除的文件，不加-A只包括修改和新增的文件)  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_add.png)    
 7.然后使用git commit 提交这次的commit注释  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_commit_again.png)  
