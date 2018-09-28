@@ -39,3 +39,4 @@ tags:
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_push_order.png)  
 10.填写账号和密码信息，成功连接后，同步信息如下  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/github/git_push_return_info.png)  
+以上完成github的简单的pull和push功能
