@@ -12,14 +12,15 @@
 
 1.首先得下载个自由门软件(自行百度)  
 2.查看一下需要添加的地址格式  
-![]()  
-3.下载个需要导入的文件  
-原项目地址  
+![](https://github.com/276622709/276622709.github.io/blob/master/img/freegate/free_gate_address_format.png)  
+3.找个国内网站地址集 
+这里发现github上有gfw_whitelist项目比较符合我们的要求  
 [gfw_whitelist](https://github.com/breakwa11/gfw_whitelist)  
-4.原文件下载地址  
+4.源文件下载地址  
 [whitelist](https://github.com/breakwa11/gfw_whitelist/raw/master/whitelist.pac)  
-5.将源文件里需要的数据保留，其他没用的都删除  
-可以看到原文件中有用的数据格式是已字典的形式存在的，这里我用python将原文件里面需要的数据进行格式转换  
+5.将源文件里需要的数据保留，其他没用的都删除(有用的数据只有white_domains变量里的数据)  
+可以看到原文件中有用的数据格式是已字典的形式存在的，下一步我准备用python将源文件里面需要的数据进行格式转换 
+![](https://github.com/276622709/276622709.github.io/blob/master/img/freegate/original_file_date.png)
 6.编写python代码保存为whitelist.pac.1文件
 ```python
 white_domains = {"am":{
@@ -36,8 +37,7 @@ for key,value in white_domains.items():
   for a,b in value.items():
     print '.'+a+'.'+key
 ```
-代码源文件下载地址[]()  
-
+代码源文件下载地址[下载代码源文件](https://github.com/276622709/276622709.github.io/blob/master/code/freegate/whitelist.pac.1)  
 7.执行python  
 ```python
 python whitelist.pac.1 > whitelist
