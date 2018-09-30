@@ -18,25 +18,30 @@
 ![](https://github.com/breakwa11/gfw_whitelist/raw/master/whitelist.pac)  
 5.将源文件里需要的数据保留，其他没用的都删除  
 可以看到原文件中有用的数据格式是已字典的形式存在的，这里我用python将原文件里面需要的数据进行格式转换  
-6.编写python代码  
-white_domains = {"am":{  
-"126":1,  
-"51":1  
-},"biz":{  
-"7daysinn":1,  
-"baozhuang":1,  
-"bengfa":1,  
-"changan":1,  
-.....}  
-for key,value in white_domains.items():  
-  print '.'+key  
-  for a,b in value.items():  
-    print '.'+a+'.'+key  
+6.编写python代码保存为whitelist.pac.1文件
+```python
+white_domains = {"am":{
+"126":1,
+"51":1
+},"biz":{
+"7daysinn":1,
+"baozhuang":1,
+"bengfa":1,
+"changan":1,
+.....略}
+for key,value in white_domains.items():
+  print '.'+key
+  for a,b in value.items():
+    print '.'+a+'.'+k
+```
 代码源文件下载地址[]()  
 
 7.执行python  
-python whitelist.pac.1 > whitelist  
-8.将whitelist里面的内容粘贴到自由门软件，国内软件直通选项里(建议添加之前，先保留一份原配置文件，方便以后回档操作)
+```python
+python whitelist.pac.1 > whitelist
+```
+这样就将需要的域名格式填入whitelist文件中  
+8.将whitelist里面的内容粘贴到自由门软件，国内软件直通选项里，最后保存即可(建议添加之前，先保留一份原配置文件，方便以后回档操作)
 
 
 
