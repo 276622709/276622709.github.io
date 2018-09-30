@@ -29,6 +29,7 @@ tags:
 可以看到原文件中有用的数据格式是已字典的形式存在的，下一步我准备用python将源文件里面需要的数据进行格式转换 
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/freegate/original_file_date.png)
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/freegate/original_file_date.png)
+<img src="https://github.com/276622709/276622709.github.io/blob/master/img/freegate/original_file_date.png"></img>
 6.编写python代码保存为whitelist.pac.1文件
 ```python
 white_domains = {"am":{
