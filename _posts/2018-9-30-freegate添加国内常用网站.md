@@ -17,7 +17,7 @@ tags:
 通过github上别人获取的国内白名单列表，导入自由门网站直通选项里  
 
 
-1.首先得下载个自由门软件即freegate软件[下载链接](http://dongtaiwang.com/loc/download.en.php)
+1.首先得下载个自由门软件即freegate软件[下载链接](http://dongtaiwang.com/loc/download.en.php)  
 2.查看一下需要添加的地址格式  
 ![](https://github.com/276622709/276622709.github.io/blob/master/img/freegate/free_gate_address_format.png)  
 3.找个国内网站地址集 
