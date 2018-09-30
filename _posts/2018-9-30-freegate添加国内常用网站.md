@@ -19,7 +19,7 @@ tags:
 
 1.首先得下载个自由门软件即freegate软件[下载链接](http://dongtaiwang.com/loc/download.en.php)  
 2.查看一下需要添加的地址格式  
-![](img/freegate/free_gate_address_format.png)  
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/freegate/free_gate_address_format.png)  
 3.找个国内网站地址集 
 这里发现github上有gfw_whitelist项目比较符合我们的要求  
 [gfw_whitelist](https://github.com/breakwa11/gfw_whitelist)  
@@ -51,10 +51,10 @@ python whitelist.pac.1 > whitelist
 ```
 这样就将需要的域名格式填入whitelist文件中  
 whitelist内容如下  
-![](https://github.com/276622709/276622709.github.io/blob/master/img/freegate/white_list_content.png)
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/freegate/white_list_content.png)
 8.将whitelist里面的内容粘贴到自由门软件，国内软件直通选项里，最后保存即可(建议添加之前，先保留一份原数据配置文件，方便以后回档操作)
 备份原数据配置文件位置如下
-![](https://github.com/276622709/276622709.github.io/blob/master/img/freegate/freegate_data_file.png)
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/freegate/freegate_data_file.png)
 这里有个问题粘贴的时候如何直接粘贴会都粘贴到一行，原因是通过linux传到windows的文件，最后的换行符不一样(linux为\n,windows为\r\n)  
 因此这里我用notepad+软件-》编辑-》文档格式转化-》转换为windows格式解决(即先将whitelist文件传到windows上，再通过notepad+软件转换格式，再复制whitelist里面的内容)    
 9.由于我的电脑是winxp 32位的，所以测试了一下最多能添300个地址，然后软件就卡那了......，要么是我系统的原因，要么是软件的原因....
