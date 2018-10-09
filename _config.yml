@@ -61,12 +61,12 @@ kramdown:
 
 # Gitalk
 gitalk:
-  enable: false    #是否开启Gitalk评论
-  clientID: f2c84e7629bb1446c1a4                            #生成的clientID
-  clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
-  repo: qiubaiying.github.io    #仓库名称
-  owner: qiubaiying    #github用户名
-  admin: qiubaiying
+  enable: true    #是否开启Gitalk评论
+  clientID: 482293c40a29b31c70f5                      #生成的clientID
+  clientSecret: b9b6e7728cd126121b4c3f8e53f6466b91157fd6    #生成的clientSecret
+  repo: 276622709.github.io    #仓库名称
+  owner: 276622709    #github用户名
+  admin: 276622709
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
