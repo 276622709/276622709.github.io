@@ -1,9 +1,11 @@
 基础环境：vcenter6.7 3台esxi6.7 存储使用vsan    
 问题描述      
-1.HA功能不可用      
-error0.png  
-2.创建虚拟机时出现如下错误，应该是vsan问题      
-error1.png  
+1.HA功能不可用  
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/vcenter_dell_service/error0.png)
+
+2.创建虚拟机时出现如下错误，应该是vsan问题    
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/vcenter_dell_service/error1.png)
+
 问题处理时长：3天      
 问题解决情况：未解决，需要升级解决      
 问题处理过程如下：
@@ -62,7 +64,7 @@ dell一、二线支持查找原因，不好使，上传日志，说明天找新�
 4.忽悠人    
 说是vmware原厂支持，实际不是，是他们自己的人    
 总结    
-最后重新安装解决了这个问题  
+最后问题解决了，没有重装，vsan应该是时间不匹配,vcenter的时间需要通过5480端口查看，HA的原因是vmk1中勾选了managerment选项，并且vmk和vsan网络需要经过三层互通(但是来安装的dell工程师说不需要互通，之前就的项目没做过互通，他对此保留意见...)  
 遇到问题，还是自己分析吧，他第三天顶级工程师能做的事情，我之前就弄完了，我以为他能从代码方面分析一下，结果也是查日志找KB库.....      
 
 求人不如求己      
