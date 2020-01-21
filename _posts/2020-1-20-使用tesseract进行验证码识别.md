@@ -2,5 +2,5 @@
 今天进行的是较低一级的验证码图片的识别，即图片上的字母和数值上有横线如何进行识别。如下图，当然现今有很多站点提供api可供大家进行识别，我们要做的是如何在本地搭建一套这样的验证码识别系统，供自己使用  
 <img>  
 工具：tesseract+数据训练  
-
+我使用的验证码sample：https://www.kaggle.com/fournierp/captcha-version-2-images 有兴趣可以自己制作验证码：https://pypi.org/project/captcha/    
 对于图片点选这种图片验证码识别，个人猜想应该使用的是神经网络识别系统，之后又时间会实践一下。  
