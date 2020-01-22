@@ -203,17 +203,40 @@ for  filename in os.listdir(path):
 convert_all_training_image.py代码下载地址[下载](https://github.com/276622709.......convert_all_training_image.py)  
 然后执行下面代码  
 ```
-chmod 777 1.bash
-sh 1.bash
+#chmod 777 1.bash
+#sh 1.bash
 ```
-1.bash代码下载地址[下载](https://github.com/276622709/.....1.bash)  
+代码如下:
+```
+#!/bin/bash
+#将所有png图片拷贝到新目录下，以防误删除，因为图片过滤500张大概需要3个小时
+cp /root/samples_training_convert_image/* /root/samples_training_after_filter/
+cd /root/samples_training_after_filter
+#去除掉中转图片
+shopt -s extglob
+rm -rf !(*strip*)
+#将图片以结果名称重命名 如:e2d66_strip_noise.png---->e2d66.png
+for i in `ls`
+do
+rename "_strip_noise" "" *
+done
+#将png格式图片转化为tif
+for i in `ls`
+do
+k=${i%.*}
+convertformat $i $k.tif
+done
+#将png图片删除
+rm -rf *.png
+```
+其中1.bash代码下载地址[下载](https://github.com/276622709/.....1.bash)  
 python代码主要是下面三个功能  
-1. 将图片转换成灰度图  
-2. 二值化处理  
-3. 降噪    
+(1)将图片转换成灰度图  
+(2)二值化处理  
+(3)降噪    
 bash脚本主要是下面两个功能      
-4. png图片转换成tif图片    
-5. 只保留名称包含strip的图片，并将图片重命名为与真实验证码名称相同的图片    
+(4)png图片转换成tif图片    
+(5)只保留名称包含strip的图片，并将图片重命名为与真实验证码名称相同的图片    
 ###六. 对数据进行训练
 这里使用jTessBoxEditor是在win7上进行的，因此合并后的tif文件，和修改后的box文件都需要上传到centos7服务器上    
 1. tif文件合并    
@@ -275,8 +298,8 @@ combine_tessdata -e eng.traineddata eng.lstm
 #cp /root/zhai/ocr/1-17/output/engnum.traineddata /usr/local/share/tessdata/
 ```
 ### 六. 验证码识别验证
-2. 重复之前动作，只是路径有修改
-3. 
+2. 重复之前动作，只是路径有修改将之前路径中带training的替换成test  
+3. 继续。。。  
 
 ```
 python代码
