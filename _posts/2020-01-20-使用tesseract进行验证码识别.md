@@ -12,14 +12,15 @@ tags:
 在使用python进行web爬虫过程中，验证码是一个无法绕过的问题，一些大型网站会采用比较高级的验证方式，如图片点选，滑动图片等等。  
 今天进行的是较低一级的验证码图片的识别，即图片上的字母和数值上有横线如何进行识别。如下图，当然现今有很多站点提供api可供大家进行识别，我们要做的是如何在本地搭建一套这样的验证码识别系统，供自己使用  
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/captcha_show.png)  
+对于像12306网站这种网站上的图片点验证码识别比较麻烦，应该使用的是神经网络识别系统，之后有时间会实践一下，更新一个专门关于神经网络识别验证码的博客。
+
 ## 软件环境
 - 系统版本centos7.4.1708  
 - python版本3.6.5  
 - tesseract版本4.1.0  
 - leptonica版本1.78.0(tesseract包的安装依赖)  
+- PIL库图片过滤
 - tesseract数据训练验证码  
-我使用的验证码sample：https://www.kaggle.com/fournierp/captcha-version-2-images 有兴趣可以自己制作验证码：https://pypi.org/project/captcha/    
-对于像12306网站这种网站上的图片点验证码识别比较麻烦，应该使用的是神经网络识别系统，之后有时间会实践一下，更新一个专门关于神经网络识别验证码的博客。
 
 ## 安装及部署
 ### 一. 安装并编译leptonica
@@ -116,8 +117,27 @@ tags:
 lstmtraining --version
 4.1.0
 ```
-1. 去网上下载用于验证码训练的图片1000+张
-2. 将1000+张验证码图片分成二部分，一部分用于tesseract数据训练，一部分用于测试训练后的识别准确率
+### 四. 下载用于图片训练的验证码   
+1. 去网上下载用于验证码训练的图片1000+张  
+我使用的验证码sample：https://www.kaggle.com/fournierp/captcha-version-2-images 有兴趣可以自己制作验证码：https://pypi.org/project/captcha/ 
+2. 将1000+张验证码图片分成二部分，一部分用于tesseract数据训练，一部分用于测试训练后的识别准确率  
+```
+待训练原始验证码存储路径:/root/samples_training/
+待验证原始验证码存储路径:/root/samples_test/
+```
+### 五. 使用PIL库进行图片过滤
+1. 
+2. 
+3. 
+### 五. 对数据进行训练
+1. 
+2. 
+3. 
+### 六. 验证码识别验证
+1. 
+2. 
+3. 
+
 ```
 python代码
 ```
