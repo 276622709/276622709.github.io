@@ -120,7 +120,8 @@ lstmtraining --version
 ### 四. 下载用于图片训练的验证码   
 1. 去网上下载用于验证码训练的图片1000+张  
 我使用的验证码sample：https://www.kaggle.com/fournierp/captcha-version-2-images 有兴趣可以自己制作验证码：https://pypi.org/project/captcha/ 
-2. 将1000+张验证码图片分成二部分，一部分用于tesseract数据训练，一部分用于测试训练后的识别准确率  
+2. 将1000+张验证码图片分成二部分，一部分用于tesseract数据训练，一部分用于测试训练后的识别准确率    
+这里将500+张待训练验证码放在/root/samples_training/下，将500+张待验证验证码放在/root/samples_test/下。  
 ```
 待训练原始验证码存储路径:/root/samples_training/
 待训练降噪后验证码存储路径:/root/samples_training_convert_image/
@@ -199,17 +200,72 @@ for  filename in os.listdir(path):
     pIx(photo,iteration=2)      #因为图片上的横线大概是两像素宽度，所以这里迭代2次
 ```    
     
-代码下载地址[下载](http://github.com/276622709.......)  
-执行过程分为三部  
-1. 将图片转换成灰度图
-2. 二值化处理
-3. 降噪
+convert_all_training_image.py代码下载地址[下载](https://github.com/276622709.......convert_all_training_image.py)  
+然后执行下面代码  
+```
+chmod 777 1.bash
+sh 1.bash
+```
+1.bash代码下载地址[下载](https://github.com/276622709/.....1.bash)  
+python代码主要是下面三个功能  
+1. 将图片转换成灰度图  
+2. 二值化处理  
+3. 降噪  
+bash脚本主要是下面两个功能    
+4. png图片转换成tif图片  
+5. 只保留名称包含strip的图片，并将图片重命名为与真实验证码名称相同的图片  
 ### 五. 对数据进行训练
-1. tif文件合并
-2. 生成box文件+box文件编辑
+这里使用jTessBoxEditor是在win7上进行的，因此合并后的tif文件，和修改后的box文件都需要上传到centos7服务器上  
+1. tif文件合并  
+用jTessBoxEditor工具，将样本文件合并成.tif文件。  
+我这里引用的别人教程中的图片，因为我写这篇博客用的家里的macbook，训练环境用的公司的win7系统，现在又正好放假，忘记截图保存了，但过程是一样的。  
+1）将box文件和tif文件放在同一目录下
+2）Tools -> Merge TIFF，选择文件类型为all the images，选中所有图片 -> 命名为***.tif 合并为.tif文件
+![]()
+![]()
+因为这里用的是别的博客上的图片，和我实际中命名的图片有冲突，我的环境中图片合并后的名字为engnum.zhai.exp0.tif，将合并后的tif文件上传到centos服务器上  
+2. 生成box文件
+```
+#tesseract engnum.zhai.exp0.tif engnum.zhai.exp0 -l eng lstmbox
+```
+上一步执行完后会生成一个叫做engnum.zhai.exp0.box的文件，将这个文件和engnum.zhai.exp0.tif文件拷后到win7环境下
+3. box文件调整
+使用jTessBoxEditor对box文件进行调整，将识别出错的字符进行更改，这里需要注意的是因为用到了lstm，lstm是识别一行字符，而不是单个字符。即使用jTessBoxEditor打开文件后一行数据为一个框。
+![]()
+![]()
+将调整后的box文件拷贝到centos服务器上  
 3. 数据训练
+
+(1)得到.lstmf文件，为之后的数据训练做准备   
+```
+#tesseract engnum.zhai.exp0.tif engnum.zhai.exp0 -l eng --psm 6 lstm.train
+```
+(2)提取.lstm文件  
+从 https://github.com/tesseract-ocr/tessdata_best 链接中下载eng.traineddata文件    
+将上一步下载的eng.traineddata文件拷贝到服务器上，然后运行下面命令    
+```
+combine_tessdata -e eng.traineddata eng.lstm
+```
+运行上述代码，会从.traineddata文件中提取出eng.lstm 文件，将该文件放在/root/zhai/ocr/1-17/下  
+(3)创建包含 (1）步生成的训练文件路径的txt文件  
+```
+#vim engnum.training_files.txt
+```
+代码如下
+```
+/root/zhai/ocr/1-17/engnum.zhai.exp0.lstmf
+```
+(4)数据训练
+```
+#time lstmtraining --model_output="./output/" --continue_from="./eng.lstm" --train_listfile="./engnum.training_files.txt" --traineddata="./eng.traineddata" --debug_interval -1 --target_error_rate 1
+```
+--model_output:训练数据生成目录    
+--continue_from:(2）中提取出来的文件  
+--train_listfile:(3) 步内容  
+--traineddata:(2)下载内容  
+–-debug_interval 设置为-1时，命令运行后会显示一些结果参数  
+--target_error_rate 设置为1时，指数据训练到它的错误率小于等于百分之一为止  
 ### 六. 验证码识别验证
-1. 
 2. 
 3. 
 
