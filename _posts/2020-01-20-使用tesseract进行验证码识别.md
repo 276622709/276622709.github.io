@@ -219,8 +219,8 @@ bash脚本主要是下面两个功能
 1. tif文件合并  
 用jTessBoxEditor工具，将样本文件合并成.tif文件。  
 我这里引用的别人教程中的图片，因为我写这篇博客用的家里的macbook，训练环境用的公司的win7系统，现在又正好放假，忘记截图保存了，但过程是一样的。  
-1）将box文件和tif文件放在同一目录下
-2）Tools -> Merge TIFF，选择文件类型为all the images，选中所有图片 -> 命名为***.tif 合并为.tif文件
+(1)将box文件和tif文件放在同一目录下
+(2)Tools -> Merge TIFF，选择文件类型为all the images，选中所有图片 -> 命名为***.tif 合并为.tif文件
 ![]()
 ![]()
 因为这里用的是别的博客上的图片，和我实际中命名的图片有冲突，我的环境中图片合并后的名字为engnum.zhai.exp0.tif，将合并后的tif文件上传到centos服务器上  
@@ -234,8 +234,7 @@ bash脚本主要是下面两个功能
 ![]()
 ![]()
 将调整后的box文件拷贝到centos服务器上  
-3. 数据训练
-
+4. 数据训练
 (1)得到.lstmf文件，为之后的数据训练做准备   
 ```
 #tesseract engnum.zhai.exp0.tif engnum.zhai.exp0 -l eng --psm 6 lstm.train
@@ -255,18 +254,28 @@ combine_tessdata -e eng.traineddata eng.lstm
 ```
 /root/zhai/ocr/1-17/engnum.zhai.exp0.lstmf
 ```
-(4)数据训练
+(4)生成数据训练checkpoint
 ```
-#time lstmtraining --model_output="./output/" --continue_from="./eng.lstm" --train_listfile="./engnum.training_files.txt" --traineddata="./eng.traineddata" --debug_interval -1 --target_error_rate 1
+#time lstmtraining --model_output="./output/" --continue_from="./eng.lstm" --train_listfile="./engnum.training_files.txt" --traineddata="./eng.traineddata" --debug_interval -1 --target_error_rate 0.1
 ```
 --model_output:训练数据生成目录    
 --continue_from:(2）中提取出来的文件  
 --train_listfile:(3) 步内容  
 --traineddata:(2)下载内容  
 –-debug_interval 设置为-1时，命令运行后会显示一些结果参数  
---target_error_rate 设置为1时，指数据训练到它的错误率小于等于百分之一为止  
+--target_error_rate 设置为1时，指数据训练到它的错误率小于等于百分之十为止  
+(5)生成最终的数据训练集合  
+通过以下命令生成engnum.traineddata训练数据  
+```
+#lstmtraining --stop_training --continue_from="/root/zhai/ocr/1-17/output/_checkpoint" --traineddata="/root/zhai/ocr/1-17/eng.traineddata" --model_output="/root/zhai/ocr/1-17/output/engnum.traineddata"
+```
+
+(6)将训练的数据放到指定位置  
+```
+#cp /root/zhai/ocr/1-17/output/engnum.traineddata /usr/local/share/tessdata/
+```
 ### 六. 验证码识别验证
-2. 
+2. 重复之前动作，只是路径有修改
 3. 
 
 ```
