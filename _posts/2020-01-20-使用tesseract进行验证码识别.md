@@ -237,10 +237,10 @@ python代码主要是下面三个功能
 bash脚本主要是下面两个功能      
 (4)png图片转换成tif图片    
 (5)只保留名称包含strip的图片，并将图片重命名为与真实验证码名称相同的图片    
-###六. 对数据进行训练
-这里使用jTessBoxEditor是在win7上进行的，因此合并后的tif文件，和修改后的box文件都需要上传到centos7服务器上    
-1. tif文件合并    
-用jTessBoxEditor工具，将样本文件合并成.tif文件。    
+### 六. 对数据进行训练
+这里使用jTessBoxEditor是在win7上进行的，因此合并后的tif文件，和修改后的box文件都需要上传到centos7服务器上      
+1. tif文件合并      
+用jTessBoxEditor工具，将样本文件合并成.tif文件。      
 我这里引用的别人教程中的图片，因为我写这篇博客用的家里的macbook，训练环境用的公司的win7系统，现在又正好放假，忘记截图保存了，但过程是一样的。    
 (1)将box文件和tif文件放在同一目录下  
 (2)Tools -> Merge TIFF，选择文件类型为all the images，选中所有图片 -> 命名为***.tif 合并为.tif文件  
