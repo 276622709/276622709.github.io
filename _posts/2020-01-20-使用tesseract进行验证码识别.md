@@ -298,7 +298,7 @@ bash脚本主要是下面两个功能
 #cp /root/zhai/ocr/1-17/output/engnum.traineddata /usr/local/share/tessdata/
 ```
 ### 六. 验证码识别验证  
-1. 将convert_all_training_image.py中的
+1.将convert_all_training_image.py中的
 ```
 image_training_convert_path='/root/samples_training_convert_image/'
 ```
@@ -306,7 +306,7 @@ image_training_convert_path='/root/samples_training_convert_image/'
 ```
 image_training_convert_path='/root/samples_test_convert_image/'
 ```
-1.bash中的
+2.将1.bash中的
 ```
 cp /root/samples_training_convert_image/* /root/samples_training_after_filter/
 cd /root/samples_training_after_filter
@@ -316,13 +316,13 @@ cd /root/samples_training_after_filter
 cp /root/samples_test_convert_image/* /root/samples_test_after_filter/
 cd /root/samples_test_after_filter
 ```  
-2. 重复之前五步骤中动作
+3.重复之前五步骤中动作
 即  
 ```
 python convert_all_training_image.py
 sh 1.bash
 ```
-3. 验证码识别  
+4.进行验证码识别  
 验证码识别主要是使用tesseract命令，通过在result.py中调用subprocess.getoutput()和os.system()来执行命令。    
 ```
 python result.py
@@ -350,9 +350,9 @@ for filename in os.listdir(path):
     print("图片应当别识别为:%s" % fileindexname)
 print("识别率为:{:.2%}".format(sum/int(sumnumber)))
 ```
-result.py下载地址[下载](http://)
+result.py代码下载地址[下载](http://)    
 可以看出识别率约为83.03%，也就是10个图片能识别出8个左右，这样的识别效果我还算满意，当然想要更精确就要提供更多的训练素材
-## 总结
+## 七. 总结
 使用tesseract识别验证码，是有局限性的，而且干扰条件越多，过滤效果越不好，识别率越低，并且无法通过手工处理得到完美的模型，只能是尽量处理干扰条件，尽量完美。  
 之后根据需求会考虑用神经网络识别技术做验证码识别，到时候也会即时更新blog。
 
