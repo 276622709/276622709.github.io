@@ -3,7 +3,7 @@ layout: post
 title: 使用tesseract进行验证码识别
 date: 2020-01-20
 author: ZMY
-header-img: 2020-01-20.png
+header-img: /2020-01-20/background.png
 tags:
     - tesseract
 ---
@@ -200,7 +200,7 @@ for  filename in os.listdir(path):
     pIx(photo,iteration=2)      #因为图片上的横线大概是两像素宽度，所以这里迭代2次
 ```    
     
-convert_all_training_image.py代码下载地址[下载](https://github.com/276622709.......convert_all_training_image.py)  
+convert_all_training_image.py代码下载地址[下载](https://github.com/276622709/276622709.github.io/tree/master/code/2020-01-20/convert_all_training_image.py)  
 然后执行下面代码  
 ```
 #chmod 777 1.bash
@@ -229,7 +229,7 @@ done
 #将png图片删除
 rm -rf *.png
 ```
-其中1.bash代码下载地址[下载](https://github.com/276622709/.....1.bash)  
+其中1.bash代码下载地址[下载](https://github.com/276622709/276622709.github.io/tree/master/code/2020-01-20/1.bash)  
 python代码主要是下面三个功能  
 (1)将图片转换成灰度图  
 (2)二值化处理  
@@ -244,8 +244,8 @@ bash脚本主要是下面两个功能
 我这里引用的别人教程中的图片，因为我写这篇博客用的家里的macbook，训练环境用的公司的win7系统，现在又正好放假，忘记截图保存了，但过程是一样的。    
 (1)将box文件和tif文件放在同一目录下  
 (2)Tools -> Merge TIFF，选择文件类型为all the images，选中所有图片 -> 命名为***.tif 合并为.tif文件  
-![]()  
-![]()  
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT1.png)  
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT2.png)  
 因为这里用的是别的博客上的图片，和我实际中命名的图片有冲突，我的环境中图片合并后的名字为engnum.zhai.exp0.tif，将合并后的tif文件上传到centos服务器上  
 2. 生成box文件  
 ```
@@ -254,8 +254,8 @@ bash脚本主要是下面两个功能
 上一步执行完后会生成一个叫做engnum.zhai.exp0.box的文件，将这个文件和engnum.zhai.exp0.tif文件拷后到win7环境下  
 3. box文件调整  
 使用jTessBoxEditor对box文件进行调整，将识别出错的字符进行更改，这里需要注意的是因为用到了lstm，lstm是识别一行字符，而不是单个字符。即使用jTessBoxEditor打开文件后一行数据为一个框。  
-![]()  
-![]()  
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT3.png)  
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT4.png)  
 将调整后的box文件拷贝到centos服务器上    
 4. 数据训练  
 (1)得到.lstmf文件，为之后的数据训练做准备     
@@ -350,7 +350,8 @@ for filename in os.listdir(path):
     print("图片应当别识别为:%s" % fileindexname)
 print("识别率为:{:.2%}".format(sum/int(sumnumber)))
 ```
-result.py代码下载地址[下载](http://)    
+result.py代码下载地址[下载](https://github.com/276622709/276622709.github.io/tree/master/code/2020-01-20/result.py)  
+![]()  
 可以看出识别率约为83.03%，也就是10个图片能识别出8个左右，这样的识别效果我还算满意，当然想要更精确就要提供更多的训练素材
 ## 七. 总结
 使用tesseract识别验证码，是有局限性的，而且干扰条件越多，过滤效果越不好，识别率越低，并且无法通过手工处理得到完美的模型，只能是尽量处理干扰条件，尽量完美。  
