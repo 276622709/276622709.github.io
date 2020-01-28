@@ -3,7 +3,7 @@ layout: post
 title: 使用tesseract进行验证码识别
 date: 2020-01-20
 author: ZMY
-header-img: /2020-01-20/background.png
+header-img: img/2020-01-20/background.png
 tags:
     - tesseract
 ---
@@ -253,7 +253,7 @@ bash脚本主要是下面两个功能
 ```
 上一步执行完后会生成一个叫做engnum.zhai.exp0.box的文件，将这个文件和engnum.zhai.exp0.tif文件拷后到win7环境下  
 3. box文件调整  
-使用jTessBoxEditor对box文件进行调整，将识别出错的字符进行更改，这里需要注意的是因为用到了lstm，lstm是识别一行字符，而不是单个字符。即使用jTessBoxEditor打开文件后一行数据为一个框。  
+使用jTessBoxEditor对box文件进行调整，将识别出错的字符进行更改，这里需要注意的是因为用到了lstm，lstm是识别一行字符，而不是单个字符。即使用jTessBoxEditor打开文件后一行数据为一个框。这里用的是别人的图片实际调整按照一行一调整进行，保存的文件名不变   
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT3.png)  
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT4.png)  
 将调整后的box文件拷贝到centos服务器上    
@@ -350,7 +350,8 @@ for filename in os.listdir(path):
     print("图片应当别识别为:%s" % fileindexname)
 print("识别率为:{:.2%}".format(sum/int(sumnumber)))
 ```
-result.py代码下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/result.py)  
+result.py代码下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/result.py) 
+识别率如下图所示:  
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/result.png)  
 可以看出识别率约为83.03%，也就是10个图片能识别出8个左右，这样的识别效果我还算满意，当然想要更精确就要提供更多的训练素材
 ## 七. 总结
