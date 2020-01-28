@@ -135,7 +135,7 @@ lstmtraining --version
 ```
 #python convert_all_training_image.py
 ```
-代码如下：    
+代码如下：下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/convert_all_training_image.py)   
 ```
 from PIL import Image,ImageFilter
 import os
@@ -199,14 +199,12 @@ for  filename in os.listdir(path):
     photo.save(itcp+filename_prefix+'_blackwhite.png')
     pIx(photo,iteration=2)      #因为图片上的横线大概是两像素宽度，所以这里迭代2次
 ```    
-    
-convert_all_training_image.py代码下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/convert_all_training_image.py)  
 然后执行下面代码  
 ```
 #chmod 777 1.bash
 #sh 1.bash
 ```
-代码如下:
+代码如下:下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/1.bash) 
 ```
 #!/bin/bash
 #将所有png图片拷贝到新目录下，以防误删除，因为图片过滤500张大概需要3个小时
@@ -229,7 +227,6 @@ done
 #将png图片删除
 rm -rf *.png
 ```
-其中1.bash代码下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/1.bash)  
 python代码主要是下面三个功能  
 (1)将图片转换成灰度图  
 (2)二值化处理  
@@ -327,7 +324,7 @@ sh 1.bash
 ```
 python result.py
 ```
-代码内容如下:  
+代码内容如下:下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/result.py)  
 ```
 import os
 import subprocess
@@ -350,7 +347,6 @@ for filename in os.listdir(path):
     print("图片应当别识别为:%s" % fileindexname)
 print("识别率为:{:.2%}".format(sum/int(sumnumber)))
 ```
-result.py代码下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/result.py) 
 识别率如下图所示:  
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/result.png)  
 可以看出识别率约为83.03%，也就是10个图片能识别出8个左右，这样的识别效果我还算满意，当然想要更精确就要提供更多的训练素材
