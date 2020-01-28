@@ -24,62 +24,62 @@ tags:
 
 ## 安装及部署
 ### 一. 安装并编译leptonica
-1. 安装依赖包  
+1.安装依赖包  
 ```
 #yum install gcc autoconf automake libtool libjpeg-devel libpng-devel libtiff-devel zlib-devel -y
 ```  
-2. 下载leptonica-1.78.0并编译、加载环境变量      
+2.下载leptonica-1.78.0并编译、加载环境变量      
 ```
 #wget http://www.leptonica.org/source/leptonica-1.78.0.tar.gz
 #tar xzvf leptonica-1.78.0.tar.gz
 #cd leptonica-1.78.0
 ```
-3. 编译并安装  
+3.编译并安装  
 ```
 #./autogen.sh 
 #./configure
 #make
 #make install
 ```
-4. 添加环境变量  
+4.添加环境变量  
 ```
 #vim /etc/profile
 ```
-5. 最后添加如下内容  
+5.最后添加如下内容  
 ```
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PAYT:/usr/local/lib
 #export LIBLEPT_HEADERSDIR=/usr/local/include
 #export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig 
 ```
-6. 执行如下命令使之立即生效  
+6.执行如下命令使之立即生效  
 ```
 #source /etc/profile
 ```
 ### 二.下载并安装tesseract4.1.0
-1. 安装tesseract
+1.安装tesseract
 ```
 #wget https://github.com/tesseract-ocr/tesseract/archive/4.1.0.tar.gz
 #tar xzvf tesseract-4.1.0.tar.gz
 #cd tesseract-4.1.0
 ```
-2. 编译并安装
+2.编译并安装
 ```
 #./autogen.sh 
 #./configure
 #make
 #make install
 ````
-3. 查看tesseract版本
+3.查看tesseract版本
 ```
 #tesseract --version
 4.1.0
 ```
 ### 三.training的编译安装
-1. 安装依赖库  
+1.安装依赖库  
 ```
 #yum install libicu-devel pango-devel cairo-devel -y
 ```
-2. 下载并安装libarchive  
+2.下载并安装libarchive  
 ```
 #wget http://www.libarchive.org/downloads/libarchive-3.3.3.tar.gz
 #tar xzvf libarchive-3.3.3.tar.gz
@@ -89,7 +89,7 @@ tags:
 #make
 #make install
 ```
-3. 下载安装icu52版本,不安装这个软件包training会包icu版本较低错误    
+3.下载安装icu52版本,不安装这个软件包training会包icu版本较低错误    
 ```
 #wget http://download.icu-project.org/files/icu4c/52.1/icu4c-52_1-src.tgz
 #tar -xvzf icu4c-52_1-src.tgz
@@ -99,28 +99,28 @@ tags:
 #make -j 5
 #make install
 ```
-4. 创建软连接
+4.创建软连接
 ```
 #ln -s /usr/local/lib/libicui18n.so.52 /usr/lib64/libicui18n.so.52
 #ln -s /usr/local/lib/libicuio.so.52 /usr/lib64/libicuio.so.52
 #ln -s /usr/local/lib/libicuuc.so.52 /usr/lib64/libicuuc.so.52
 #ln -s /usr/local/lib/libicudata.so.52 /usr/lib64/libicudata.so.5
 ```
-5. 编译并安装traning
+5.编译并安装traning
 ```
 #./configure
 #make training
 #make training-install
 ```
-6. 有如下提示training安装成功  
+6.有如下提示training安装成功  
 ```
 lstmtraining --version
 4.1.0
 ```
 ### 四. 下载用于图片训练的验证码   
-1. 去网上下载用于验证码训练的图片1000+张  
+1.去网上下载用于验证码训练的图片1000+张  
 我使用的验证码sample：https://www.kaggle.com/fournierp/captcha-version-2-images 有兴趣可以自己制作验证码：https://pypi.org/project/captcha/ 
-2. 将1000+张验证码图片分成二部分，一部分用于tesseract数据训练，一部分用于测试训练后的识别准确率    
+2.将1000+张验证码图片分成二部分，一部分用于tesseract数据训练，一部分用于测试训练后的识别准确率    
 这里将500+张待训练验证码放在/root/samples_training/下，将500+张待验证验证码放在/root/samples_test/下。  
 ```
 待训练原始验证码存储路径:/root/samples_training/
@@ -244,17 +244,17 @@ bash脚本主要是下面两个功能
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT1.png)  
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT2.png)  
 因为这里用的是别的博客上的图片，和我实际中命名的图片有冲突，我的环境中图片合并后的名字为engnum.zhai.exp0.tif，将合并后的tif文件上传到centos服务器上  
-2. 生成box文件  
+2.生成box文件  
 ```
 #tesseract engnum.zhai.exp0.tif engnum.zhai.exp0 -l eng lstmbox
 ```
 上一步执行完后会生成一个叫做engnum.zhai.exp0.box的文件，将这个文件和engnum.zhai.exp0.tif文件拷后到win7环境下  
-3. box文件调整  
+3.box文件调整  
 使用jTessBoxEditor对box文件进行调整，将识别出错的字符进行更改，这里需要注意的是因为用到了lstm，lstm是识别一行字符，而不是单个字符。即使用jTessBoxEditor打开文件后一行数据为一个框。这里用的是别人的图片实际调整按照一行一调整进行，保存的文件名不变   
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT3.png)  
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT4.png)  
 将调整后的box文件拷贝到centos服务器上    
-4. 数据训练  
+4.数据训练  
 (1)得到.lstmf文件，为之后的数据训练做准备     
 ```
 #tesseract engnum.zhai.exp0.tif engnum.zhai.exp0 -l eng --psm 6 lstm.train
@@ -351,6 +351,13 @@ print("识别率为:{:.2%}".format(sum/int(sumnumber)))
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/result.png)  
 可以看出识别率约为83.03%，也就是10个图片能识别出8个左右，这样的识别效果我还算满意，当然想要更精确就要提供更多的训练素材
 ## 七. 总结
+使用tesseract识别验证码的核心处理过程如下  
+1.将各种需要的软件及相关依赖安装好  
+2.使用PIL库对待训练的图片进行灰度、二值、降噪等处理  
+3.对待训练的图片进行合成、转换box文件  
+4.对box文件进行改错微调  
+5.使用lstmtraining进行数据训练  
+6.使用tesseract进行验证码识别  
 使用tesseract识别验证码，是有局限性的，而且干扰条件越多，过滤效果越不好，识别率越低，并且无法通过手工处理得到完美的模型，只能是尽量处理干扰条件，尽量完美。  
 之后根据需求会考虑用神经网络识别技术做验证码识别，到时候也会即时更新blog。
 
