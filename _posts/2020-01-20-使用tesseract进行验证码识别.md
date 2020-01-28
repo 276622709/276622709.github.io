@@ -200,7 +200,7 @@ for  filename in os.listdir(path):
     pIx(photo,iteration=2)      #因为图片上的横线大概是两像素宽度，所以这里迭代2次
 ```    
     
-convert_all_training_image.py代码下载地址[下载](https://github.com/276622709/276622709.github.io/tree/master/code/2020-01-20/convert_all_training_image.py)  
+convert_all_training_image.py代码下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/convert_all_training_image.py)  
 然后执行下面代码  
 ```
 #chmod 777 1.bash
@@ -229,7 +229,7 @@ done
 #将png图片删除
 rm -rf *.png
 ```
-其中1.bash代码下载地址[下载](https://github.com/276622709/276622709.github.io/tree/master/code/2020-01-20/1.bash)  
+其中1.bash代码下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/1.bash)  
 python代码主要是下面三个功能  
 (1)将图片转换成灰度图  
 (2)二值化处理  
@@ -350,8 +350,8 @@ for filename in os.listdir(path):
     print("图片应当别识别为:%s" % fileindexname)
 print("识别率为:{:.2%}".format(sum/int(sumnumber)))
 ```
-result.py代码下载地址[下载](https://github.com/276622709/276622709.github.io/tree/master/code/2020-01-20/result.py)  
-![]()  
+result.py代码下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/result.py)  
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/result.png)  
 可以看出识别率约为83.03%，也就是10个图片能识别出8个左右，这样的识别效果我还算满意，当然想要更精确就要提供更多的训练素材
 ## 七. 总结
 使用tesseract识别验证码，是有局限性的，而且干扰条件越多，过滤效果越不好，识别率越低，并且无法通过手工处理得到完美的模型，只能是尽量处理干扰条件，尽量完美。  
