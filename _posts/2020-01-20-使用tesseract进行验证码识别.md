@@ -180,7 +180,7 @@ def pIx(data,iteration=1):
         pIx(data,iteration=iteration)
 for  filename in os.listdir(path):
     image_training_path=path
-    image_training_convert_path='/root/samples_test_convert_image/'
+    image_training_convert_path='/root/samples_training_convert_image/'
     itp=image_training_path#简化一下变量名
     itcp=image_training_convert_path
     img=Image.open(itp+filename)
@@ -238,15 +238,15 @@ bash脚本主要是下面两个功能
 (4)png图片转换成tif图片    
 (5)只保留名称包含strip的图片，并将图片重命名为与真实验证码名称相同的图片    
 ### 六. 对数据进行训练
-这里使用jTessBoxEditor是在win7上进行的，因此合并后的tif文件，和修改后的box文件都需要上传到centos7服务器上      
-1. tif文件合并      
+这里使用jTessBoxEditor是在win7上进行的，因此合并后的tif文件，和修改后的box文件都需要上传到centos7服务器上  
+1.tif文件合并      
 用jTessBoxEditor工具，将样本文件合并成.tif文件。      
 我这里引用的别人教程中的图片，因为我写这篇博客用的家里的macbook，训练环境用的公司的win7系统，现在又正好放假，忘记截图保存了，但过程是一样的。    
 (1)将box文件和tif文件放在同一目录下  
 (2)Tools -> Merge TIFF，选择文件类型为all the images，选中所有图片 -> 命名为***.tif 合并为.tif文件  
 ![]()  
 ![]()  
-因为这里用的是别的博客上的图片，和我实际中命名的图片有冲突，我的环境中图片合并后的名字为engnum.zhai.exp0.tif，将合并后的tif文件上传到centos服务器上    
+因为这里用的是别的博客上的图片，和我实际中命名的图片有冲突，我的环境中图片合并后的名字为engnum.zhai.exp0.tif，将合并后的tif文件上传到centos服务器上  
 2. 生成box文件  
 ```
 #tesseract engnum.zhai.exp0.tif engnum.zhai.exp0 -l eng lstmbox
@@ -266,7 +266,7 @@ bash脚本主要是下面两个功能
 从 https://github.com/tesseract-ocr/tessdata_best 链接中下载eng.traineddata文件      
 将上一步下载的eng.traineddata文件拷贝到服务器上，然后运行下面命令      
 ```
-combine_tessdata -e eng.traineddata eng.lstm
+#combine_tessdata -e eng.traineddata eng.lstm
 ```
 运行上述代码，会从.traineddata文件中提取出eng.lstm 文件，将该文件放在/root/zhai/ocr/1-17/下    
 (3)创建包含 (1）步生成的训练文件路径的txt文件    
@@ -279,14 +279,14 @@ combine_tessdata -e eng.traineddata eng.lstm
 ```
 (4)生成数据训练checkpoint  
 ```
-#time lstmtraining --model_output="./output/" --continue_from="./eng.lstm" --train_listfile="./engnum.training_files.txt" --traineddata="./eng.traineddata" --debug_interval -1 --target_error_rate 0.1
+#time lstmtraining --model_output="./output/" --continue_from="./eng.lstm" --train_listfile="./engnum.training_files.txt" --traineddata="./eng.traineddata" --debug_interval -1 --target_error_rate 0.01
 ```
 --model_output:训练数据生成目录    
 --continue_from:(2）中提取出来的文件  
 --train_listfile:(3) 步内容  
 --traineddata:(2)下载内容  
 –-debug_interval 设置为-1时，命令运行后会显示一些结果参数  
---target_error_rate 设置为1时，指数据训练到它的错误率小于等于百分之十为止  
+--target_error_rate 设置为0.01 为了准确率，将数值设置的小一些    
 (5)生成最终的数据训练集合  
 通过以下命令生成engnum.traineddata训练数据  
 ```
@@ -297,11 +297,62 @@ combine_tessdata -e eng.traineddata eng.lstm
 ```
 #cp /root/zhai/ocr/1-17/output/engnum.traineddata /usr/local/share/tessdata/
 ```
-### 六. 验证码识别验证
-2. 重复之前动作，只是路径有修改将之前路径中带training的替换成test  
-3. 继续。。。  
-
+### 六. 验证码识别验证  
+1. 将convert_all_training_image.py中的
 ```
-python代码
+image_training_convert_path='/root/samples_training_convert_image/'
 ```
+替换成
+```
+image_training_convert_path='/root/samples_test_convert_image/'
+```
+1.bash中的
+```
+cp /root/samples_training_convert_image/* /root/samples_training_after_filter/
+cd /root/samples_training_after_filter
+```
+替换成
+```
+cp /root/samples_test_convert_image/* /root/samples_test_after_filter/
+cd /root/samples_test_after_filter
+```  
+2. 重复之前五步骤中动作
+即  
+```
+python convert_all_training_image.py
+sh 1.bash
+```
+3. 验证码识别  
+验证码识别主要是使用tesseract命令，通过在result.py中调用subprocess.getoutput()和os.system()来执行命令。    
+```
+python result.py
+```
+代码内容如下:  
+```
+import os
+import subprocess
+path="/root/samples_test_after_filter" #过滤后待识别的图片验证码
+sum=0
+for filename in os.listdir(path):
+    sumnumber=len(os.listdir(path)) #待识别的文件总数
+    fileindexname=filename.split(".")[0] #取文件名.前面的部分
+    absolutefilename=path+'/'+filename #取绝对路径文件名
+    outputfilename=os.getcwd()+'/'+'file' #tesseract识别后生成的文件名
+    readoutputfile=os.getcwd()+'/'+'file.txt'#读取tesseract生成的文件名
+    command1="tesseract %s %s -l engnum" %(absolutefilename,outputfilename) #执>行tesseract识别图片验证码命令参数保存在command1中
+    command2="cat %s" %readoutputfile  #将识别出的结果保存在command2变量中
+    os.system(command1)  #将识别结果保存到file.txt中
+    value=subprocess.getoutput(command2) #取出识别结果赋值给value变量
+    value_strip_blank=value.lower().strip().replace(' ','') #字母变小写后再去掉>识别过程中存在的空格
+    if fileindexname == value_strip_blank:
+        sum=sum+1
+    print("当前图片识别结果是:%s" % value_strip_blank)
+    print("图片应当别识别为:%s" % fileindexname)
+print("识别率为:{:.2%}".format(sum/int(sumnumber)))
+```
+result.py下载地址[下载](http://)
+可以看出识别率约为83.03%，也就是10个图片能识别出8个左右，这样的识别效果我还算满意，当然想要更精确就要提供更多的训练素材
 ## 总结
+使用tesseract识别验证码，是有局限性的，而且干扰条件越多，过滤效果越不好，识别率越低，并且无法通过手工处理得到完美的模型，只能是尽量处理干扰条件，尽量完美。  
+之后根据需求会考虑用神经网络识别技术做验证码识别，到时候也会即时更新blog。
+
