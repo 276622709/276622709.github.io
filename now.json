@@ -1,5 +1,0 @@
-{"routes": [
-    { "src": "/redirect", "status": 301, "headers": { "Location": "https://zeit.co/" } 
-    }
-]
-}
