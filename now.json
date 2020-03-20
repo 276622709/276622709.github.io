@@ -1,5 +1,7 @@
-{
-  "redirects": [
-    { "source": "/index.html", "destination": "/index.html", "statusCode": 301 }
-  ]
-}
+"routes": [
+    {
+      "src": "/",
+      "status": 301,
+      "headers": { "Location": "https://276622709-github-io.now.sh/" }
+    }
+]
