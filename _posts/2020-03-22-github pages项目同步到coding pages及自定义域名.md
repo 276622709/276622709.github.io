@@ -1,7 +1,7 @@
 ---
 layout: post
 title: github pages项目同步到coding pages及自定义域名
-date: 2020-03-022
+date: 2020-03-22
 author: ZMY
 header-img: img/post-bg-desk.jpg
 catalog : true
