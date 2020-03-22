@@ -8,7 +8,9 @@ catalog : true
 tags:
     - coding pages
 ---
+
 ## <img class="original" src='https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/original.png'>github pages项目同步到coding pages及自定义域名
+
 ## 背景
 使用GitHub pages做blog的同学可能都知道，要想别人通过搜索引擎找到自己的内容，最好的方式就是通过搜索引擎收录自己的网址。但是通过实践发现，google可以收录自己的网站，但是百度不行（历史原因，自行了解下）  
 因此如何将自己的blog收录到百度内，是很多在github pages做blog要解决的问题。解决的办法有很多，我这里介绍的是如何通过coding pages解决这个问题。 
@@ -16,6 +18,7 @@ tags:
 + 已在github pages上有自己的网站  
 + coding已注册账号(没账号需要申请官网[](https://coding.net))  
 + 新网已注册账号（或其他域名申请平台）  
+
 ## 1.coding操作过程
 ### 1.1新建项目
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-22/1.png)
