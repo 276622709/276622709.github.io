@@ -22,7 +22,7 @@ tags:
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-22/2.png)
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-22/3.png)
 ### 1.2 同步github库到本地
-命令参考我之前的blog
+命令参考我之前的blog <https://276622709.github.io/2018/09/28/github%E5%88%9D%E6%AD%A5%E4%BD%BF%E7%94%A8/>
 ### 1.3 将上一步同步到本地的github库内容同步到coding库中
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-22/4.png)
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-22/5.png)
