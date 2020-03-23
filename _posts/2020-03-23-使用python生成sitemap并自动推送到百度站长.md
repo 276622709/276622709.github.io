@@ -24,7 +24,7 @@ tags:
 安装reppy模块,并下载py脚本
 ```
 #pip3 install reppy
-#wget sitemap_gen_baidu_auto_push.py
+#wget https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-03-23/sitemap_gen_baidu_auto_push.py
 ```
 其中sitemap_gen_baidu_auto_push.py是自己修改的，你需要修改脚本中的变量curloption,变量值为百度站长中你自己拥有的curl命令脚本  
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-23/1.png)
@@ -41,4 +41,5 @@ tags:
 ## 4.登陆百度站长平台将自己博客的sitemap.xml网址添加
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-23/3.png)
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-23/4.png)
+以后每次更新博客后通过该脚本即可主动更新sitemap.xml内容并推送给百度站长平台  
 
