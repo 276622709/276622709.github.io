@@ -1,1 +1,7 @@
-text
+http://toncar.cz/opensource/sitemap_gen.html
+
+pip3 install reppy
+
+wget https://git.bernhard-ehlers.de/ehlers/sitemap_gen/raw/branch/master/sitemap_gen.py
+
+python sitemap_gen_baidu_auto_push.py -o sitemap_baidu.xml -c always http://www.zmy024.cn
