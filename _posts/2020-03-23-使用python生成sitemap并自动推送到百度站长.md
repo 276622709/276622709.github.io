@@ -34,7 +34,7 @@ tags:
 ```
 #python sitemap_gen_baidu_auto_push.py -o sitemap.xml -c always http://www.zmy024.cn
 ```
-如下图所示即为成功   
+如下图所示出现success即为成功   
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-23/2.png)
 ## 3.git更新blog和sitemap.xml文件
 参考之前我写的blog https://276622709.github.io/2018/09/28/github%E5%88%9D%E6%AD%A5%E4%BD%BF%E7%94%A8/
