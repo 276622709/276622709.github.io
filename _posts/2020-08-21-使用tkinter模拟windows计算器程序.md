@@ -21,11 +21,11 @@ tags:
 + pyinstaller打包程序
 
 ## 1.计算器程序设计思路
-tkinter是python里自带的模块，可以直接使用
-tkinter设计思路
-1.创建按钮
-2.按钮布局
-3.逻辑函数处理
+tkinter是python里自带的模块，可以直接使用  
+tkinter设计思路  
+1.创建按钮  
+2.按钮布局  
+3.逻辑函数处理  
 ## 2.程序说明
 ```
 # -*- coding:utf-8 -*-
@@ -107,25 +107,16 @@ bcal.grid(row=5,column=3,padx=1,pady=1)
 
 root.mainloop()
 ```
+程序[下载地址](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-08-21/calculate.py)
 ## 3.安装打包工具pyinstaller  
 ```
 #pip3 install pyinstaller
 ```
 ## 4.制作exe程序
-其中sitemap_gen_baidu_auto_push.py是自己修改的，你需要修改脚本中的变量curloption,变量值为百度站长中你自己拥有的curl命令脚本  
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-23/1.png)
+使用pyinstaller工具制作exe程序，可直接在win7上运行，制作后exe程序在dist文件夹中  
+其中-w参数，是关闭cmd窗口参数,-i后添加桌面图标文件  
+图标文件下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-08-21/Calculator.ico)
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-08-21/2020-08-20_164318.png)
 
-项目参考地址<http://toncar.cz/opensource/sitemap_gen.html>  
-## 2.执行脚本命令生成sitemap.xml,并将博客网址主动推送给百度站长平台
-```
-#python sitemap_gen_baidu_auto_push.py -o sitemap.xml -c always http://www.zmy024.cn
-```
-如下图所示出现success即为成功   
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-23/2.png)
-## 3.git更新blog和sitemap.xml文件
-参考之前我写的blog
-<https://276622709.github.io/2018/09/28/github%E5%88%9D%E6%AD%A5%E4%BD%BF%E7%94%A8/>
-## 4.登陆百度站长平台将自己博客的sitemap.xml网址添加
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-23/3.png)
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-03-23/4.png)
-以后每次更新博客后通过该脚本即可主动更新sitemap.xml内容并推送给百度站长平台  
+## 5.程序展示
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-08-21/11.gif)
