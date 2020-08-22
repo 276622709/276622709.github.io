@@ -14,7 +14,7 @@ tags:
 ## <img class="original" src='https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/original.png'>使用tkinter模拟windows计算器程序
 
 ## 背景
-最近用计算器比较频繁，随合计用python做一个图形化程序，后用pyinstaller打包做成exe文件，可以在win7上直接运行  
+最近用计算器比较频繁，随考虑是否可以用python做一个图形化程序，后用pyinstaller打包做成exe文件，可以在win7上直接运行。后查找资料，综合考虑后选择tkinter做图形化工具  
 ## 前提条件
 + python3.7环境
 + win7环境
