@@ -3,7 +3,7 @@ layout: post
 title: 使用tkinter模拟windows计算器程序
 date: 2020-08-21
 author: ZMY
-header-img: img/post-bg-desk.jpg
+header-img: img/timg.jpg
 catalog : true
 tags:
     - python 
@@ -115,8 +115,10 @@ root.mainloop()
 ## 4.制作exe程序
 使用pyinstaller工具制作exe程序，可直接在win7上运行，制作后exe程序在dist文件夹中  
 其中-w参数，是关闭cmd窗口参数,-i后添加桌面图标文件  
-图标文件下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-08-21/Calculator.ico)
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-08-21/2020-08-20_164318.png)
+![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-08-21/2020-08-20_164318.png)  
+
+图标文件下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-08-21/Calculator.ico)  
+
 
 ## 5.程序展示
 ![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-08-21/11.gif)
