@@ -1,10 +1,10 @@
 基础环境：vcenter6.7 3台esxi6.7 存储使用vsan    
 问题描述      
 1.HA功能不可用  
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/vcenter_dell_service/error0.png)
+![](../img/vcenter_dell_service/error0.png)
 
 2.创建虚拟机时出现如下错误，应该是vsan问题    
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/vcenter_dell_service/error1.png)
+![](../img/vcenter_dell_service/error1.png)
 
 问题处理时长：3天      
 问题解决情况：未解决，需要升级解决      
@@ -30,7 +30,7 @@
 
 第三天：    
 9:30  收到对方的远程连接请求，对方开始操作，一直处理到11:30左右告知我是个vcenter的bug，需要升级(？？纳尼)    
- 
+
 现在的情况是他们可以提供远程支持升级vcenter,但他们只协助，指导操作，然后我上网查了一下vcenter6.7 EP06和U1b发现是今年1月份才发布的，也就是说这个问题是今年1月份才解决的，我这个平台是dell的人上个月来安装的，也就是说他给我安装的时候就是有BUG存在的vcenter6.7版本      
 
 然后我们这边领导找大客户经理看看他那边有没有好的解决方案，让大客户经理和他们dell的人沟通，未完.....  

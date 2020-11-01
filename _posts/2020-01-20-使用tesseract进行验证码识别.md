@@ -8,11 +8,11 @@ catalog : true
 tags:
     - tesseract
 ---
-## <img class="original" src='https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/original.png'>使用tesseract进行验证码识别  
+## <img class="original" src='../img/original.png'>使用tesseract进行验证码识别  
 ## 项目目的  
 在使用python进行web爬虫过程中，验证码是一个无法绕过的问题，一些大型网站会采用比较高级的验证方式，如图片点选，滑动图片等等。  
 今天进行的是较低一级的验证码图片的识别，即图片上的字母和数值上有横线如何进行识别。如下图，当然现今有很多站点提供api可供大家进行识别，我们要做的是如何在本地搭建一套这样的验证码识别系统，供自己使用  
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/captcha_show.png)  
+![](../img/2020-01-20/captcha_show.png)  
 对于像12306网站这种网站上的图片点验证码识别比较麻烦，应该使用的是神经网络识别系统，之后有时间会实践一下，更新一个专门关于神经网络识别验证码的博客。
 
 ## 软件环境
@@ -28,7 +28,7 @@ tags:
 1.安装依赖包  
 ```
 #yum install gcc autoconf automake libtool libjpeg-devel libpng-devel libtiff-devel zlib-devel -y
-```  
+```
 2.下载leptonica-1.78.0并编译、加载环境变量      
 ```
 #wget http://www.leptonica.org/source/leptonica-1.78.0.tar.gz
@@ -136,7 +136,7 @@ lstmtraining --version
 ```
 #python convert_all_training_image.py
 ```
-代码如下：下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/convert_all_training_image.py)   
+代码如下：下载地址[下载](../code/2020-01-20/convert_all_training_image.py)   
 ```
 from PIL import Image,ImageFilter
 import os
@@ -199,13 +199,13 @@ for  filename in os.listdir(path):
     photo=Img.point(table,'1')
     photo.save(itcp+filename_prefix+'_blackwhite.png')
     pIx(photo,iteration=2)      #因为图片上的横线大概是两像素宽度，所以这里迭代2次
-```    
+```
 然后执行下面代码  
 ```
 #chmod 777 1.bash
 #sh 1.bash
 ```
-代码如下:下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/1.bash) 
+代码如下:下载地址[下载](../code/2020-01-20/1.bash) 
 ```
 #!/bin/bash
 #将所有png图片拷贝到新目录下，以防误删除，因为图片过滤500张大概需要3个小时
@@ -242,8 +242,8 @@ bash脚本主要是下面两个功能
 我这里引用的别人教程中的图片，因为我写这篇博客用的家里的macbook，训练环境用的公司的win7系统，现在又正好放假，忘记截图保存了，但过程是一样的。    
 (1)将box文件和tif文件放在同一目录下  
 (2)Tools -> Merge TIFF，选择文件类型为all the images，选中所有图片 -> 命名为***.tif 合并为.tif文件  
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT1.png)  
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT2.png)  
+![](../img/2020-01-20/jT1.png)  
+![](../img/2020-01-20/jT2.png)  
 因为这里用的是别的博客上的图片，和我实际中命名的图片有冲突，我的环境中图片合并后的名字为engnum.zhai.exp0.tif，将合并后的tif文件上传到centos服务器上  
 2.生成box文件  
 ```
@@ -252,8 +252,8 @@ bash脚本主要是下面两个功能
 上一步执行完后会生成一个叫做engnum.zhai.exp0.box的文件，将这个文件和engnum.zhai.exp0.tif文件拷后到win7环境下  
 3.box文件调整  
 使用jTessBoxEditor对box文件进行调整，将识别出错的字符进行更改，这里需要注意的是因为用到了lstm，lstm是识别一行字符，而不是单个字符。即使用jTessBoxEditor打开文件后一行数据为一个框。这里用的是别人的图片实际调整按照一行一调整进行，保存的文件名不变   
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT3.png)  
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/jT4.png)  
+![](../img/2020-01-20/jT3.png)  
+![](../img/2020-01-20/jT4.png)  
 将调整后的box文件拷贝到centos服务器上    
 4.数据训练  
 (1)得到.lstmf文件，为之后的数据训练做准备     
@@ -313,7 +313,7 @@ cd /root/samples_training_after_filter
 ```
 cp /root/samples_test_convert_image/* /root/samples_test_after_filter/
 cd /root/samples_test_after_filter
-```  
+```
 3.重复之前五步骤中动作
 即  
 ```
@@ -325,7 +325,7 @@ sh 1.bash
 ```
 python result.py
 ```
-代码内容如下:下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-01-20/result.py)  
+代码内容如下:下载地址[下载](../code/2020-01-20/result.py)  
 ```
 import os
 import subprocess
@@ -349,7 +349,7 @@ for filename in os.listdir(path):
 print("识别率为:{:.2%}".format(sum/int(sumnumber)))
 ```
 识别率如下图所示:  
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-01-20/result.png)  
+![](../img/2020-01-20/result.png)  
 可以看出识别率约为83.03%，也就是10个图片能识别出8个左右，这样的识别效果我还算满意，当然想要更精确就要提供更多的训练素材
 ## 七. 总结
 使用tesseract识别验证码的核心处理过程如下  
