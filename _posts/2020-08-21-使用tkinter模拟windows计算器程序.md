@@ -11,7 +11,7 @@ tags:
     - 计算器
 ---
 
-## <img class="original" src='https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/original.png'>使用tkinter模拟windows计算器程序
+## <img class="original" src='../img/original.png'>使用tkinter模拟windows计算器程序
 
 ## 背景
 最近用计算器比较频繁，随考虑是否可以用python做一个图形化程序，后用pyinstaller打包做成exe文件，可以在win7上直接运行。后查找资料，综合考虑后选择tkinter做图形化工具  
@@ -107,7 +107,7 @@ bcal.grid(row=5,column=3,padx=1,pady=1)
 
 root.mainloop()
 ```
-程序[下载地址](https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-08-21/calculate.py)
+程序[下载地址](../code/2020-08-21/calculate.py)
 ## 3.安装打包工具pyinstaller  
 ```
 #pip3 install pyinstaller
@@ -115,10 +115,10 @@ root.mainloop()
 ## 4.制作exe程序
 使用pyinstaller工具制作exe程序，可直接在win7上运行，制作后exe程序在dist文件夹中  
 其中-w参数，是关闭cmd窗口参数,-i后添加桌面图标文件  
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-08-21/2020-08-20_164318.png)  
+![](../img/2020-08-21/2020-08-20_164318.png)  
 
-图标文件下载地址[下载](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-08-21/Calculator.ico)  
+图标文件下载地址[下载](../img/2020-08-21/Calculator.ico)  
 
 
 ## 5.程序展示
-![](https://raw.githubusercontent.com/276622709/276622709.github.io/master/img/2020-08-21/11.gif)
+![](../img/2020-08-21/11.gif)
