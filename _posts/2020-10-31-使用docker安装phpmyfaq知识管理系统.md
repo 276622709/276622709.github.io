@@ -21,16 +21,16 @@ docker-compose
 phpmyfaq3.0.6  
 ## 安装过程
 1. 安装docker环境  
-1.1 替换yum源  
+* 替换yum源  
     
+``` # cd /etc/yum.repos.d/
+    # mkdir repo_bak
+    # mv *.repo repo_bak/
+    # wget http://mirrors.aliyun.com/repo/Centos-7.repo
+    # yum install epel-release -y
 ```
-# cd /etc/yum.repos.d/
-# mkdir repo_bak
-# mv *.repo repo_bak/
-# wget http://mirrors.aliyun.com/repo/Centos-7.repo
-# yum install epel-release -y
-```
-1.2 安装docker引擎    
+   
+* 安装docker引擎    
 
 ```
 # yum install -y yum-utils git
@@ -41,8 +41,8 @@ phpmyfaq3.0.6
 # yum install gcc python-devel python3 -y
 # pip3 install docker-compose
 ```  
-1.3 启动docker服务并设置开机自启动  
-    
+* 启动docker服务并设置开机自启动  
+  
 ```
 # systemctl start docker
 # systemctl enable docker
@@ -259,7 +259,7 @@ elasticsearch    | Caused by: java.nio.file.AccessDeniedException: /usr/share/el
 ```
 
 5. phpmyfaq基本设置  
-访问http://ip:8080进行基础设置，其中数据库用户名和密码在docker-compose.yml可以查看  
+访问 http://ip:8080 进行基础设置，其中数据库用户名和密码在docker-compose.yml可以查看  
 ![](../img/2020-10-31/1.png)
 ldap我没配置，其他的正常配置，ip地址根据你的具体情况自行设置  
 6. 添加故障知识库过程  
