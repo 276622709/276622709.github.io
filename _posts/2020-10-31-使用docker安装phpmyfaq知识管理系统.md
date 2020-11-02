@@ -14,14 +14,14 @@ tags:
 ## 目的
 使用docker安装phpmyfaq记录平时遇到的故障及处理过程，方便员工自行处理和管理员处理故障
 ## 环境
-centos7.4 2核 64位操作系统
-docker
-docker-compose
-phpmyfaq3.0.6
+centos7.4 2核 64位操作系统  
+docker  
+docker-compose  
+phpmyfaq3.0.6  
 ## 安装过程
-1. 安装docker环境
+1. 安装docker环境  
 
-1.1 替换yum源
+1.1 替换yum源  
 ```
 # cd /etc/yum.repos.d/
 # mkdir repo_bak
@@ -29,7 +29,7 @@ phpmyfaq3.0.6
 # wget http://mirrors.aliyun.com/repo/Centos-7.repo
 # yum install epel-release -y
 ```
-1.2  安装docker引擎
+1.2  安装docker引擎  
 ```
 # yum install -y yum-utils git
 # sudo yum-config-manager \
@@ -39,22 +39,22 @@ phpmyfaq3.0.6
 # yum install gcc python-devel python3 -y
 # pip3 install docker-compose
 ```
-1.3 启动docker服务并设置开机自启动
+1.3 启动docker服务并设置开机自启动  
 ```
 # systemctl start docker
 # systemctl enable docker
 ```
-2. 下载phpmyfaq环境
-项目地址[](https://github.com/thorsten/phpMyFAQ)
-docker对应项目地址[](https://github.com/phpMyFAQ/docker-hub)
+2. 下载phpmyfaq环境  
+项目地址[](https://github.com/thorsten/phpMyFAQ)  
+docker对应项目地址[](https://github.com/phpMyFAQ/docker-hub)  
 ```
 # git clone https://github.com/phpMyFAQ/docker-hub.git && cd docker-hub
 # git checkout 3.0
 # docker build -t phpmyfaq .
 ```
-3. docker-compose.yml和dockerfile部分修改
-由于按照官网操作流程不能一次性安装成功，故按照自己实际安装成功流程完善配置文件如下
-dockfile文件内容如下：
+3. docker-compose.yml和dockerfile部分修改  
+由于按照官网操作流程不能一次性安装成功，故按照自己实际安装成功流程完善配置文件如下  
+dockfile文件内容如下：  
 ```
 #
 # This image uses 2 interstage and an php:7.3-apache final stage
@@ -219,53 +219,53 @@ ENTRYPOINT [ "/entrypoint" ]
 CMD [ "apache2-foreground" ]
 
 ```
-docker-compose.yml 对应的elasticsearch服务器在最后添加ports端口映射
+docker-compose.yml 对应的elasticsearch服务器在最后添加ports端口映射  
 ```
 ports:
   - 9200:9200
 ```
-4. docker-compose 下载并配置启动容器
+4. docker-compose 下载并配置启动容器  
 ```
 docker-compose up 
 ```
-启动过程中会报如下两个故障
-elasticsearch    | [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
-Error:
-elasticsearch    | Caused by: java.nio.file.AccessDeniedException: /usr/share/elasticsearch/data/nodes
-第一个故障解决办法
+启动过程中会报如下两个故障  
+elasticsearch    | [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]  
+Error:  
+elasticsearch    | Caused by: java.nio.file.AccessDeniedException: /usr/share/elasticsearch/data/nodes  
+第一个故障解决办法  
 ```
 # cd docker-hub/volumes
 # chmod g+rwx esdata
 # chgrp 1000 esdata
 ```
-第二个故障解决办法
+第二个故障解决办法  
 ```
 # echo vm.max_map_count=262144 >> /etc/sysctl.conf
 # sysctl -p
 ```
-5. phpmyfaq基本设置
-访问http://ip:8080进行基础设置，其中数据库用户名和密码在docker-compose.yml可以查看
+5. phpmyfaq基本设置  
+访问http://ip:8080进行基础设置，其中数据库用户名和密码在docker-compose.yml可以查看  
 ![](../img/2020-10-31/1.png)
-ldap我没配置，其他的正常配置，ip地址根据你的具体情况自行设置
-6. 添加故障知识库过程
-主要涉及到的几个操作步骤我在下面都贴出来，因为我只用到能够查找故障的处理办法的功能，其他的我没用到，如果有其他需要，请自行研究，并且首页页面有些不要的元素我已经隐藏，涉及的文件为index.html,startpage.html
-6.1 登陆管理控制台
+ldap我没配置，其他的正常配置，ip地址根据你的具体情况自行设置  
+6. 添加故障知识库过程  
+主要涉及到的几个操作步骤我在下面都贴出来，因为我只用到能够查找故障的处理办法的功能，其他的我没用到，如果有其他需要，请自行研究，并且首页页面有些不要的元素我已经隐藏，涉及的文件为index.html,startpage.html  
+6.1 登陆管理控制台  
 ![](../img/2020-10-31/2.png)
-6.2 添加新的类别
+6.2 添加新的类别  
 ![](../img/2020-10-31/3.png)
-6.3 新增问答
+6.3 新增问答  
 ![](../img/2020-10-31/4.png)
-6.4 绑定类别
+6.4 绑定类别  
 ![](../img/2020-10-31/5.png)
-6.5 设置问题准入权限
-有些问题的处理需要涉及到管理员权限，因此我这里做个两个权限规划，可以根据自己需求进行规划
+6.5 设置问题准入权限  
+有些问题的处理需要涉及到管理员权限，因此我这里做个两个权限规划，可以根据自己需求进行规划  
 ![](../img/2020-10-31/6.png)
-操作后点击右上角保存
-6.6 系统设置
-一般设置这3项就可以，其他的用户上
+操作后点击右上角保存  
+6.6 系统设置  
+一般设置这3项就可以，其他的用户上  
 ![](../img/2020-10-31/7.png)
-7. 查找故障
-进入首页
+7. 查找故障  
+进入首页  
 ![](../img/2020-10-31/8.png)
-查找问题
+查找问题  
 ![](../img/2020-10-31/11.gif)
