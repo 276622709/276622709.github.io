@@ -21,7 +21,7 @@ docker-compose
 phpmyfaq3.0.6  
 ## 安装过程
 1. 安装docker环境  
-    1.1 替换yum源  
+1.1 替换yum源  
     
 ```
 # cd /etc/yum.repos.d/
@@ -30,8 +30,7 @@ phpmyfaq3.0.6
 # wget http://mirrors.aliyun.com/repo/Centos-7.repo
 # yum install epel-release -y
 ```
-
-    1.2 安装docker引擎    
+1.2 安装docker引擎    
 
 ```
 # yum install -y yum-utils git
@@ -41,9 +40,8 @@ phpmyfaq3.0.6
 # yum install docker-ce docker-ce-cli containerd.io -y
 # yum install gcc python-devel python3 -y
 # pip3 install docker-compose
-```
-
-    1.3 启动docker服务并设置开机自启动  
+```  
+1.3 启动docker服务并设置开机自启动  
     
 ```
 # systemctl start docker
