@@ -6,7 +6,8 @@ author: ZMY
 header-img: ../img/2020-10-31/background.png
 catalog : true
 tags:
-    - phpmyfaq docker
+    - phpmyfaq
+    - docker  
 ---
 ## <img class="original" src='../img/original.png'>使用docker安装phpmyfaq知识管理系统
 ## 背景
@@ -29,7 +30,8 @@ phpmyfaq3.0.6
 # wget http://mirrors.aliyun.com/repo/Centos-7.repo
 # yum install epel-release -y
 ```
-   1.2 安装docker引擎    
+
+    1.2 安装docker引擎    
 
 ```
 # yum install -y yum-utils git
@@ -40,22 +42,28 @@ phpmyfaq3.0.6
 # yum install gcc python-devel python3 -y
 # pip3 install docker-compose
 ```
+
     1.3 启动docker服务并设置开机自启动  
+    
 ```
 # systemctl start docker
 # systemctl enable docker
 ```
+
 2. 下载phpmyfaq环境  
 [项目地址](https://github.com/thorsten/phpMyFAQ)  
 [docker对应项目地址](https://github.com/phpMyFAQ/docker-hub)  
+
 ```
 # git clone https://github.com/phpMyFAQ/docker-hub.git && cd docker-hub
 # git checkout 3.0
 # docker build -t phpmyfaq .
 ```
+
 3. docker-compose.yml和dockerfile部分修改  
 由于按照官网操作流程不能一次性安装成功，故按照自己实际安装成功流程完善配置文件如下  
-dockfile文件内容如下：  
+dockfile文件内容如下：
+
 ```
 #
 # This image uses 2 interstage and an php:7.3-apache final stage
@@ -218,32 +226,40 @@ ENTRYPOINT [ "/entrypoint" ]
 
 #=== Re-Set CMD as we changed the default entrypoint ===
 CMD [ "apache2-foreground" ]
-
 ```
+
 docker-compose.yml 对应的elasticsearch服务器在最后添加ports端口映射  
+
 ```
 ports:
   - 9200:9200
 ```
+
 4. docker-compose 下载并配置启动容器  
+
 ```
 docker-compose up 
 ```
+
 启动过程中会报如下两个故障  
 elasticsearch    | [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]  
 Error:  
 elasticsearch    | Caused by: java.nio.file.AccessDeniedException: /usr/share/elasticsearch/data/nodes  
 第一个故障解决办法  
+
 ```
 # cd docker-hub/volumes
 # chmod g+rwx esdata
 # chgrp 1000 esdata
 ```
+
 第二个故障解决办法  
+
 ```
 # echo vm.max_map_count=262144 >> /etc/sysctl.conf
 # sysctl -p
 ```
+
 5. phpmyfaq基本设置  
 访问http://ip:8080进行基础设置，其中数据库用户名和密码在docker-compose.yml可以查看  
 ![](../img/2020-10-31/1.png)
