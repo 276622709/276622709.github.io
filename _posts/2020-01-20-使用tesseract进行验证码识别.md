@@ -3,7 +3,7 @@ layout: post
 title: 使用tesseract进行验证码识别
 date: 2020-01-20
 author: ZMY
-header-img: /img/2020-01-20/background.png
+header-img: ../img/2020-01-20/background.png
 catalog : true
 tags:
     - tesseract
