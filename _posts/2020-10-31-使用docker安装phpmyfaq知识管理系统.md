@@ -20,7 +20,8 @@ docker
 docker-compose  
 phpmyfaq3.0.6  
 ## 安装过程
-1. 安装docker环境  
+1. 安装docker环境
+
 替换yum源  
     
 ``` # cd /etc/yum.repos.d/
