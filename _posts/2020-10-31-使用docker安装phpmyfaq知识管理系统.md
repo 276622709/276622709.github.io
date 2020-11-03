@@ -22,7 +22,7 @@ docker-compose
 phpmyfaq3.0.6  
 ## 安装过程  
 
-1. 安装docker环境
+* 1.安装docker环境
 
 替换yum源  
     
@@ -51,7 +51,7 @@ phpmyfaq3.0.6
 # systemctl enable docker
 ```
 
-2. 下载phpmyfaq环境  
+* 2.下载phpmyfaq环境  
 [项目地址](https://github.com/thorsten/phpMyFAQ)  
 [docker对应项目地址](https://github.com/phpMyFAQ/docker-hub)  
 
@@ -61,7 +61,7 @@ phpmyfaq3.0.6
 # docker build -t phpmyfaq .
 ```
 
-3. docker-compose.yml和dockerfile部分修改  
+* 3.docker-compose.yml和dockerfile部分修改  
 由于按照官网操作流程不能一次性安装成功，故按照自己实际安装成功流程完善配置文件如下  
 dockfile文件内容如下：
 
@@ -236,7 +236,7 @@ ports:
   - 9200:9200
 ```
 
-4. docker-compose 下载并配置启动容器  
+* 4.docker-compose 下载并配置启动容器  
 
 ```
 docker-compose up 
@@ -261,11 +261,11 @@ elasticsearch    | Caused by: java.nio.file.AccessDeniedException: /usr/share/el
 # sysctl -p
 ```
 
-5. phpmyfaq基本设置  
+* 5.phpmyfaq基本设置  
 访问 http://ip:8080 进行基础设置，其中数据库用户名和密码在docker-compose.yml可以查看  
 ![](/img/2020-10-31/1.png)
 ldap我没配置，其他的正常配置，ip地址根据你的具体情况自行设置  
-6. 添加故障知识库过程  
+* 6.添加故障知识库过程  
 主要涉及到的几个操作步骤我在下面都贴出来，因为我只用到能够查找故障的处理办法的功能，其他的我没用到，如果有其他需要，请自行研究，并且首页页面有些不要的元素我已经隐藏，涉及的文件为index.html,startpage.html  
 登陆管理控制台  
 ![](/img/2020-10-31/2.png)
@@ -282,7 +282,7 @@ ldap我没配置，其他的正常配置，ip地址根据你的具体情况自�
 系统设置  
 一般设置这3项就可以，其他的用户上  
 ![](/img/2020-10-31/7.png)
-7. 查找故障  
+* 7.查找故障  
 进入首页      
 ![](/img/2020-10-31/8.png) 
 查找问题    
