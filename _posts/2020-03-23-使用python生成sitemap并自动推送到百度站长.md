@@ -3,7 +3,7 @@ layout: post
 title: 使用python生成sitemap并自动推送到百度站长
 date: 2020-03-23
 author: ZMY
-header-img: /img/post-bg-desk.jpg
+header-img: ../img/post-bg-desk.jpg
 catalog : true
 tags:
     - python 
