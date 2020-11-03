@@ -8,7 +8,7 @@ keyword: "ZMY, ZMY Blog, 小宇的博客, zhaimingyu, 翟明宇, python"
 url: "http://276622709.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/276622709/276622709.github.io.git" # you code repository
-permalink: :title/
+root: /
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
