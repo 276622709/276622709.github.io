@@ -21,7 +21,7 @@ docker-compose
 phpmyfaq3.0.6  
 ## 安装过程
 1. 安装docker环境  
-* 替换yum源  
+替换yum源  
     
 ``` # cd /etc/yum.repos.d/
     # mkdir repo_bak
@@ -30,7 +30,7 @@ phpmyfaq3.0.6
     # yum install epel-release -y
 ```
    
-* 安装docker引擎    
+安装docker引擎    
 
 ```
 # yum install -y yum-utils git
@@ -41,7 +41,7 @@ phpmyfaq3.0.6
 # yum install gcc python-devel python3 -y
 # pip3 install docker-compose
 ```  
-* 启动docker服务并设置开机自启动  
+启动docker服务并设置开机自启动  
   
 ```
 # systemctl start docker
@@ -264,19 +264,19 @@ elasticsearch    | Caused by: java.nio.file.AccessDeniedException: /usr/share/el
 ldap我没配置，其他的正常配置，ip地址根据你的具体情况自行设置  
 6. 添加故障知识库过程  
 主要涉及到的几个操作步骤我在下面都贴出来，因为我只用到能够查找故障的处理办法的功能，其他的我没用到，如果有其他需要，请自行研究，并且首页页面有些不要的元素我已经隐藏，涉及的文件为index.html,startpage.html  
-    6.1 登陆管理控制台  
+登陆管理控制台  
 ![](/img/2020-10-31/2.png)
-    6.2 添加新的类别  
+添加新的类别  
 ![](/img/2020-10-31/3.png)
-    6.3 新增问答  
+新增问答  
 ![](/img/2020-10-31/4.png)
-    6.4 绑定类别  
+绑定类别  
 ![](/img/2020-10-31/5.png)
-    6.5 设置问题准入权限  
+设置问题准入权限  
 有些问题的处理需要涉及到管理员权限，因此我这里做个两个权限规划，可以根据自己需求进行规划  
 ![](/img/2020-10-31/6.png)
 操作后点击右上角保存  
-    6.6 系统设置  
+系统设置  
 一般设置这3项就可以，其他的用户上  
 ![](/img/2020-10-31/7.png)
 7. 查找故障  
