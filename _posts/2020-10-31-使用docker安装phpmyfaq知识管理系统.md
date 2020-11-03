@@ -26,11 +26,14 @@ phpmyfaq3.0.6
 
 替换yum源  
     
-``` # cd /etc/yum.repos.d/
-    # mkdir repo_bak
-    # mv *.repo repo_bak/
-    # wget http://mirrors.aliyun.com/repo/Centos-7.repo
-    # yum install epel-release -y
+```
+
+# cd /etc/yum.repos.d/
+# mkdir repo_bak
+# mv *.repo repo_bak/
+# wget http://mirrors.aliyun.com/repo/Centos-7.repo
+# yum install epel-release -y
+
 ```
 
 安装docker引擎    
@@ -43,12 +46,15 @@ phpmyfaq3.0.6
 # yum install docker-ce docker-ce-cli containerd.io -y
 # yum install gcc python-devel python3 -y
 # pip3 install docker-compose
+
 ```
+
 启动docker服务并设置开机自启动  
 
 ```
 # systemctl start docker
 # systemctl enable docker
+
 ```
 
 * 2.下载phpmyfaq环境  
@@ -59,6 +65,7 @@ phpmyfaq3.0.6
 # git clone https://github.com/phpMyFAQ/docker-hub.git && cd docker-hub
 # git checkout 3.0
 # docker build -t phpmyfaq .
+
 ```
 
 * 3.docker-compose.yml和dockerfile部分修改  
@@ -239,7 +246,8 @@ ports:
 * 4.docker-compose 下载并配置启动容器  
 
 ```
-docker-compose up 
+docker-compose up
+
 ```
 
 启动过程中会报如下两个故障  
