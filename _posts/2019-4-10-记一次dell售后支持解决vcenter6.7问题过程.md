@@ -1,10 +1,14 @@
+---
+typora-root-url: ..
+---
+
 基础环境：vcenter6.7 3台esxi6.7 存储使用vsan    
 问题描述      
 1.HA功能不可用  
-![](../img/vcenter_dell_service/error0.png)
+![](/img/vcenter_dell_service/error0.png)
 
 2.创建虚拟机时出现如下错误，应该是vsan问题    
-![](../img/vcenter_dell_service/error1.png)
+![](/img/vcenter_dell_service/error1.png)
 
 问题处理时长：3天      
 问题解决情况：未解决，需要升级解决      

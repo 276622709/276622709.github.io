@@ -8,6 +8,7 @@ catalog : true
 tags:
     - phpmyfaq
     - docker  
+typora-root-url: ..
 ---
 ## <img class="original" src='/img/original.png'>使用docker安装phpmyfaq知识管理系统
 ## 背景
@@ -30,7 +31,7 @@ phpmyfaq3.0.6
     # wget http://mirrors.aliyun.com/repo/Centos-7.repo
     # yum install epel-release -y
 ```
-   
+
 安装docker引擎    
 
 ```
@@ -41,9 +42,9 @@ phpmyfaq3.0.6
 # yum install docker-ce docker-ce-cli containerd.io -y
 # yum install gcc python-devel python3 -y
 # pip3 install docker-compose
-```  
+```
 启动docker服务并设置开机自启动  
-  
+
 ```
 # systemctl start docker
 # systemctl enable docker
@@ -285,3 +286,5 @@ ldap我没配置，其他的正常配置，ip地址根据你的具体情况自�
 ![](/img/2020-10-31/8.png)
 查找问题    
 ![](/img/2020-10-31/11.gif)
+
+声明：本博客的<img class="original" src='/img/original.png'>原创文章，都是本人平时学习所做的笔记，转载请标注出处，谢谢合作。

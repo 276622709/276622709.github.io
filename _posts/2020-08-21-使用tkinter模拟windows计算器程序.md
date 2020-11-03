@@ -3,15 +3,16 @@ layout: post
 title: 使用tkinter模拟windows计算器程序
 date: 2020-08-21
 author: ZMY
-header-img: img/timg.jpg
+header-img: /img/timg.jpg
 catalog : true
 tags:
     - python 
     - tkinter 
     - 计算器
+typora-root-url: ..
 ---
 
-## <img class="original" src='../img/original.png'>使用tkinter模拟windows计算器程序
+## <img class="original" src='/img/original.png'>使用tkinter模拟windows计算器程序
 
 ## 背景
 最近用计算器比较频繁，随考虑是否可以用python做一个图形化程序，后用pyinstaller打包做成exe文件，可以在win7上直接运行。后查找资料，综合考虑后选择tkinter做图形化工具  
@@ -107,7 +108,7 @@ bcal.grid(row=5,column=3,padx=1,pady=1)
 
 root.mainloop()
 ```
-程序[下载地址](../code/2020-08-21/calculate.py)
+程序[下载地址](/code/2020-08-21/calculate.py)
 ## 3.安装打包工具pyinstaller  
 ```
 #pip3 install pyinstaller
@@ -115,10 +116,12 @@ root.mainloop()
 ## 4.制作exe程序
 使用pyinstaller工具制作exe程序，可直接在win7上运行，制作后exe程序在dist文件夹中  
 其中-w参数，是关闭cmd窗口参数,-i后添加桌面图标文件  
-![](../img/2020-08-21/2020-08-20_164318.png)  
+![](/img/2020-08-21/2020-08-20_164318.png)  
 
-图标文件下载地址[下载](../img/2020-08-21/Calculator.ico)  
+图标文件下载地址[下载](/img/2020-08-21/Calculator.ico)  
 
 
 ## 5.程序展示
-![](../img/2020-08-21/11.gif)
+![](/img/2020-08-21/11.gif)
+
+声明：本博客的<img class="original" src='/img/original.png'>原创文章，都是本人平时学习所做的笔记，转载请标注出处，谢谢合作。
