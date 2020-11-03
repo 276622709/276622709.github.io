@@ -3,7 +3,7 @@ layout: post
 title: 使用tkinter模拟windows计算器程序
 date: 2020-08-21
 author: ZMY
-header-img: /img/timg.jpg
+header-img: ../img/timg.jpg
 catalog : true
 tags:
     - python 
