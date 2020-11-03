@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 自由门软件添加国内网站
-header-img: /img/post-bg-coffee.jpeg
+header-img: ../img/post-bg-coffee.jpeg
 date: 2018-9-30
 auth: ZMY
 catalog : true
