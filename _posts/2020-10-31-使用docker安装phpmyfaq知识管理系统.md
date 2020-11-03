@@ -20,7 +20,8 @@ centos7.4 2核 64位操作系统
 docker  
 docker-compose  
 phpmyfaq3.0.6  
-## 安装过程
+## 安装过程  
+
 1. 安装docker环境
 
 替换yum源  
