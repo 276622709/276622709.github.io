@@ -31,7 +31,11 @@ typora-root-url: ..
 
 1.安装granafa
 - 添加yum库
-vim /etc/yum.repos.d/grafana.repo
+
+```
+# vim /etc/yum.repos.d/grafana.repo
+```
+
 ```bash
 [grafana]
 name=grafana
@@ -44,12 +48,14 @@ sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 ```
 - 启动grafana-server服务
+
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl start grafana-server
 sudo systemctl status grafana-server
 ```
 - 设置开机自启动
+
 ```bash
 systemctl enable grafana-server
 ```
@@ -61,6 +67,7 @@ systemctl enable grafana-server
 官网文档[https://grafana.com/docs/grafana/latest/installation/rpm/](https://grafana.com/docs/grafana/latest/installation/rpm/)
 
 2.安装并配置influxdb
+- 创建influxdb yum配置文件
 
 ```
 # cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
@@ -73,14 +80,17 @@ gpgkey = https://repos.influxdata.com/influxdb.key
 EOF
 ```
 - 更新yum缓存
+
 ```
 # sudo yum makecache fast
 ```
 - 安装influxdb
+
 ```
 # sudo yum -y install influxdb vim curl
 ```
 - 开启influxdb服务并设置成开机自启动
+
 ```
 # sudo systemctl start influxdb && sudo systemctl enable influxdb
 ```
