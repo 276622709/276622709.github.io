@@ -110,11 +110,10 @@ EOF
 
 - 配置vsphere input插件,将其中的vcenter信息换成你的
 
- ```
-  
-[[inputs.vsphere]]
-#### List of vCenter URLs to be monitored. These three lines must be uncommented
-### and edited for the plugin to work..
+```
+  [[inputs.vsphere]]
+  #### List of vCenter URLs to be monitored. These three lines must be uncommented
+  ### and edited for the plugin to work..
   interval = "20s"
   vcenters = [ "https://10.10.90.165/sdk" ]
   username = "administrator@vsphere.local"
@@ -129,8 +128,8 @@ EOF
   timeout = "60s"
   insecure_skip_verify = true
 
-## Historical instance
-[[inputs.vsphere]]
+  ## Historical instance
+  [[inputs.vsphere]]
   interval = "300s"
   vcenters = [ "https://10.10.90.165/sdk" ]
   username = "administrator@vsphere.local"
@@ -146,7 +145,7 @@ EOF
 
   max_query_metrics = 256
   collect_concurrency = 3
- ```
+```
 
 - 重新启动服务，加载刚修改的配置
 ```
@@ -204,6 +203,7 @@ vsphere_vm_virtualDisk
 [参考文档](https://computingforgeeks.com/how-to-monitor-vmware-esxi-with-grafana-and-telegraf/)
 
 4.添加influxdb数据源
+- 添加数据源
 ![](/img/2020-12-22/3.png)
 - 选择influxdb数据源
 ![](/img/2020-12-22/4.png)
@@ -213,9 +213,7 @@ vsphere_vm_virtualDisk
 5.添加granafa上关于vcenter6.7的dashboard
 
 - 通过granafa官网dashboard库，下载对应的dashboard,并上传,dashboard[地址](https://grafana.com/grafana/dashboards/8159)
-
   - 下载dashboard
-
   ![](/img/2020-12-22/6.png)
   - 其他dashboard下载位置
   ![](/img/2020-12-22/7.png)
@@ -229,9 +227,7 @@ vsphere_vm_virtualDisk
 6.默认dashboard存在的问题及解决办法
 
 - 安装后datastore dashboard报错
-
 ![](/img/2020-12-22/11.png)
-
 解决办法:
 
 ```
@@ -243,25 +239,17 @@ vsphere_vm_virtualDisk
 [参考文档](https://grafana.com/grafana/plugins/grafana-piechart-panel)
 
 - dashboard上cpu使用率不正确
-
   解决办法
-
   - 找到需要修改cpu usages的面板,进行编辑
-
   ![](/img/2020-12-22/12.png)
-
+  
   - 增加cpu=total-instance键值对cpu:instance-total
-
   ![](/img/2020-12-22/14.png)
-
   ![](/img/2020-12-22/15.png)
-
   ![](/img/2020-12-22/16.png)
-
+  
   - 应用后进行保存
-
   ![](/img/2020-12-22/17.png)
-
   ![](/img/2020-12-22/18.png)
 
 
