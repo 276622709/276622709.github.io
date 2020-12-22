@@ -108,9 +108,10 @@ EOF
     timeout = "0s"
 ```
 
-- 配置vsphere input插件,将其中的vcenter信息换成你的  
-```
+- 配置vsphere input插件,将其中的vcenter信息换成你的
 
+ ```
+  
 [[inputs.vsphere]]
 #### List of vCenter URLs to be monitored. These three lines must be uncommented
 ### and edited for the plugin to work..
@@ -145,7 +146,7 @@ EOF
 
   max_query_metrics = 256
   collect_concurrency = 3
-```
+ ```
 
 - 重新启动服务，加载刚修改的配置
 ```
