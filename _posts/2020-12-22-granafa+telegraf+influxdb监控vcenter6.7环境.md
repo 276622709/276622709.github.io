@@ -110,6 +110,7 @@ EOF
 
 - 配置vsphere input插件,将其中的vcenter信息换成你的  
 ```
+###
 [[inputs.vsphere]]
 ### List of vCenter URLs to be monitored. These three lines must be uncommented
 ### and edited for the plugin to work.
