@@ -200,12 +200,14 @@ vsphere_vm_virtualDisk
 如查看到有以上metrics输出，说明telegraf能够正确获取vcenter数据并存入到influxdb中  
 [参考文档](https://computingforgeeks.com/how-to-monitor-vmware-esxi-with-grafana-and-telegraf/)
 
-4.添加influxdb数据源
-添加数据源
+4.添加influxdb数据源  
+添加数据源 
 ![](/img/2020-12-22/3.png)
-选择influxdb数据源
+
+选择influxdb数据源 
 ![](/img/2020-12-22/4.png)
-添加influxdb信息
+
+添加influxdb信息 
 ![](/img/2020-12-22/5.png)
 
 5.添加granafa上关于vcenter6.7的dashboard
