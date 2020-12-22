@@ -27,8 +27,8 @@ typora-root-url: ..
   
 ## 安装并配置过程
 1.安装granafa
-- 添加yum库
-vim /etc/yum.repos.d/grafana.repo
+- 添加yum库  
+vim /etc/yum.repos.d/grafana.repo  
 ```bash
 [grafana]
 name=grafana
@@ -40,23 +40,20 @@ gpgkey=https://packages.grafana.com/gpg.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 ```
-
 - 启动grafana-server服务
 ```bash
-sudo systemctl daemon-reload
-sudo systemctl start grafana-server
-sudo systemctl status grafana-server
+#sudo systemctl daemon-reload
+#sudo systemctl start grafana-server
+#sudo systemctl status grafana-server
 ```
-
 - 设置开机自启动
 ```bash
-systemctl enable grafana-server
+#systemctl enable grafana-server
 ```
-
-开机浏览器访问http://ip:3000  
-默认用户名和密码都是admin  
+开机浏览器访问http://ip:3000    
+默认用户名和密码都是admin    
 ![](/img/2020-12-22/1.png)
-首次登陆会要求更换密码  
+首次登陆会要求更换密码    
 ![](/img/2020-12-22/2.png)
 官网文档[https://grafana.com/docs/grafana/latest/installation/rpm/](https://grafana.com/docs/grafana/latest/installation/rpm/)  
 
@@ -71,31 +68,27 @@ gpgcheck = 1
 gpgkey = https://repos.influxdata.com/influxdb.key
 EOF
 ```
-
-- 更新yum缓存
+- 更新yum缓存  
 ```
 # sudo yum makecache fast
 ```
-
-- 安装influxdb
+- 安装influxdb  
 ```
 # sudo yum -y install influxdb vim curl
 ```
-
-- 开启influxdb服务并设置成开机自启动
+- 开启influxdb服务并设置成开机自启动  
 ```
 # sudo systemctl start influxdb && sudo systemctl enable influxdb
 ```
 
-[参考文档](https://computingforgeeks.com/install-grafana-and-influxdb-on-centos-7/)
+[参考文档](https://computingforgeeks.com/install-grafana-and-influxdb-on-centos-7/)  
 
-3.安装并配置telegraf
-- 安装telegraf并配置和influxdb连接方式
+3.安装并配置telegraf  
+- 安装telegraf并配置和influxdb连接方式  
 ```
 # sudo yum -y install telegraf
 ```
-
-- 配置vsphere output插件
+- 配置vsphere output插件  
 ```
 # sudo vim /etc/telegraf/telegraf.conf
 # Configuration for sending metrics to InfluxDB
@@ -104,8 +97,7 @@ EOF
     database = "vmware"
     timeout = "0s"
 ```
-
-- 配置vsphere input插件 ,将其中的vcenter信息换成你的
+- 配置vsphere input插件 ,将其中的vcenter信息换成你的  
 ```
 [[inputs.vsphere]]
 ### List of vCenter URLs to be monitored. These three lines must be uncommented
@@ -143,24 +135,22 @@ EOF
   collect_concurrency = 3
 
 ```
-
-- 重新启动服务，加载刚修改的配置
+- 重新启动服务，加载刚修改的配置  
 ```
 sudo systemctl restart telegraf
 sudo systemctl enable telegraf
 ```
-
-验证是否有InfluxDB Metrics
+验证是否有InfluxDB Metrics  
 ```
 [root@localhost ~]# influx
 Connected to http://localhost:8086 version 1.8.3
 InfluxDB shell version: 1.8.3
 > 
-```
+```    
 ```
 > USE vmware
 Using database vmware 
-```
+```  
 ```
 > SHOW MEASUREMENTS
 name: measurements
