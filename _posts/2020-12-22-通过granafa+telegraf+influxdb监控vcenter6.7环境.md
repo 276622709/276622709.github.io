@@ -30,11 +30,8 @@ typora-root-url: ..
 ## 安装并配置过程
 
 1.安装granafa
-
 - 添加yum库
-
 vim /etc/yum.repos.d/grafana.repo
-
 ```bash
 [grafana]
 name=grafana
@@ -46,31 +43,21 @@ gpgkey=https://packages.grafana.com/gpg.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 ```
-
 - 启动grafana-server服务
-
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl start grafana-server
 sudo systemctl status grafana-server
 ```
-
 - 设置开机自启动
-
 ```bash
 systemctl enable grafana-server
 ```
-
 开机浏览器访问http://ip:3000
-
 默认用户名和密码都是admin
-
 ![](/img/2020-12-22/1.png)
-
 首次登陆会要求更换密码
-
 ![](/img/2020-12-22/2.png)
-
 官网文档[https://grafana.com/docs/grafana/latest/installation/rpm/](https://grafana.com/docs/grafana/latest/installation/rpm/)
 
 2.安装并配置influxdb
