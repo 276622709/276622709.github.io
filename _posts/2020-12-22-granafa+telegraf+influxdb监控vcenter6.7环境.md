@@ -28,7 +28,7 @@ typora-root-url: ..
   
 ## 安装并配置过程
 1.安装granafa
-- 添加yum库
++ 添加yum库
 vim /etc/yum.repos.d/grafana.repo  
 ```bash
 [grafana]
@@ -41,13 +41,13 @@ gpgkey=https://packages.grafana.com/gpg.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 ```
-- 启动grafana-server服务
++ 启动grafana-server服务
 ```bash
 #sudo systemctl daemon-reload
 #sudo systemctl start grafana-server
 #sudo systemctl status grafana-server
 ```
-- 设置开机自启动
++ 设置开机自启动
 ```bash
 #systemctl enable grafana-server
 ```
