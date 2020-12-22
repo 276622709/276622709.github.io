@@ -201,29 +201,28 @@ vsphere_vm_virtualDisk
 [参考文档](https://computingforgeeks.com/how-to-monitor-vmware-esxi-with-grafana-and-telegraf/)
 
 4.添加influxdb数据源
-- 添加数据源
+添加数据源
 ![](/img/2020-12-22/3.png)
-- 选择influxdb数据源
+选择influxdb数据源
 ![](/img/2020-12-22/4.png)
-- 添加influxdb信息
+添加influxdb信息
 ![](/img/2020-12-22/5.png)
 
 5.添加granafa上关于vcenter6.7的dashboard
 
 - 通过granafa官网dashboard库，下载对应的dashboard,并上传,dashboard[地址](https://grafana.com/grafana/dashboards/8159)
-  - 下载dashboard
+  下载dashboard
   ![](/img/2020-12-22/6.png)
-  - 其他dashboard下载位置
+  其他dashboard下载位置
   ![](/img/2020-12-22/7.png)
-  - 通过granafa上传dashboard的json文件
-![](/img/2020-12-22/8.png)
-![](/img/2020-12-22/9.png)
+  通过granafa上传dashboard的json文件
+  ![](/img/2020-12-22/8.png)
+  ![](/img/2020-12-22/9.png)
 - 添加influxdb数据源
 ![](/img/2020-12-22/10.png)
 
 
 6.默认dashboard存在的问题及解决办法
-
 - 安装后datastore dashboard报错
 ![](/img/2020-12-22/11.png)
 解决办法:
@@ -236,16 +235,14 @@ vsphere_vm_virtualDisk
 [参考文档](https://grafana.com/grafana/plugins/grafana-piechart-panel)
 
 - dashboard上cpu使用率不正确
-  解决办法
-  - 找到需要修改cpu usages的面板,进行编辑
-  ![](/img/2020-12-22/12.png)
-  
-  - 增加cpu=total-instance键值对cpu:instance-total
+  解决办法. 
+  找到需要修改cpu usages的面板,进行编辑
+  ![](/img/2020-12-22/12.png)  
+  增加cpu=total-instance键值对cpu:instance-total
   ![](/img/2020-12-22/14.png)
   ![](/img/2020-12-22/15.png)
-  ![](/img/2020-12-22/16.png)
-  
-  - 应用后进行保存
+  ![](/img/2020-12-22/16.png)  
+  应用后进行保存
   ![](/img/2020-12-22/17.png)
   ![](/img/2020-12-22/18.png)
 [参考文档](https://grafana.com/grafana/dashboards/8159/reviews)
@@ -255,13 +252,10 @@ vsphere_vm_virtualDisk
 添加后一共四个模板，分别对应全局dashboard，esxi主机dashboard，vm虚拟机dashboard和数据存储dashboard
 - vmware vsphere全局dashboard
 ![](/img/2020-12-22/19.png)
-
 - vmware vsphere主机界面展示
 ![](/img/2020-12-22/20.png)
-
 - vmware vm虚拟机界面展示
 ![](/img/2020-12-22/21.png)
-
 - vmware datastore界面展示
 ![](/img/2020-12-22/22.png)
 
