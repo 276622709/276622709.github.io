@@ -228,7 +228,6 @@ vsphere_vm_virtualDisk
 - 安装后datastore dashboard报错
 ![](/img/2020-12-22/11.png)
 解决办法:
-
 ```
 # wget https://grafana.com/api/plugins/grafana-piechart-panel/versions/1.6.1/download
 # unzip unzip grafana-piechart-panel-1.6.1.zip
