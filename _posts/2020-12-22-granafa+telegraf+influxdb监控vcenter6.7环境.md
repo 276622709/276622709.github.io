@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 通过granafa+telegraf+influxdb监控vcenter6.7环境
+title: granafa+telegraf+influxdb监控vcenter6.7环境
 date: 2020-12-22
 author: ZMY
 header-img: ../img/monitor_alarm_background.jpg
@@ -13,10 +13,10 @@ tags:
 typora-root-url: ..
 
 ---
-## <img class="original" src='/img/original.png'> 通过granafa+telegraf+influxdb监控vcenter6.7环境
+## <img class="original" src='/img/original.png'> granafa+telegraf+influxdb监控vcenter6.7环境
 
 ## 目的
-通过granafa平台展示vcenter6.7里面的数据
+通过搭建granafa平台展示vcenter6.7里面的数据
 
 ## 环境描述
 - 1台vcenter appliance+3台esxi6.7+若干台虚拟机组成的vsan环境
@@ -29,7 +29,6 @@ typora-root-url: ..
 1.安装granafa
 - 添加yum库
 vim /etc/yum.repos.d/grafana.repo
-
 ```bash
 [grafana]
 name=grafana
@@ -43,7 +42,6 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 ```
 
 - 启动grafana-server服务
-
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl start grafana-server
@@ -51,7 +49,6 @@ sudo systemctl status grafana-server
 ```
 
 - 设置开机自启动
-
 ```bash
 systemctl enable grafana-server
 ```
@@ -64,7 +61,6 @@ systemctl enable grafana-server
 官网文档[https://grafana.com/docs/grafana/latest/installation/rpm/](https://grafana.com/docs/grafana/latest/installation/rpm/)  
 
 2.安装并配置influxdb
-
 ```
 # cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
 [influxdb]
@@ -77,19 +73,16 @@ EOF
 ```
 
 - 更新yum缓存
-
 ```
 # sudo yum makecache fast
 ```
 
 - 安装influxdb
-
 ```
 # sudo yum -y install influxdb vim curl
 ```
 
 - 开启influxdb服务并设置成开机自启动
-
 ```
 # sudo systemctl start influxdb && sudo systemctl enable influxdb
 ```
@@ -98,13 +91,11 @@ EOF
 
 3.安装并配置telegraf
 - 安装telegraf并配置和influxdb连接方式
-
 ```
 # sudo yum -y install telegraf
 ```
 
 - 配置vsphere output插件
-
 ```
 # sudo vim /etc/telegraf/telegraf.conf
 # Configuration for sending metrics to InfluxDB
@@ -115,7 +106,6 @@ EOF
 ```
 
 - 配置vsphere input插件 ,将其中的vcenter信息换成你的
-
 ```
 [[inputs.vsphere]]
 ### List of vCenter URLs to be monitored. These three lines must be uncommented
@@ -155,26 +145,22 @@ EOF
 ```
 
 - 重新启动服务，加载刚修改的配置
-
 ```
 sudo systemctl restart telegraf
 sudo systemctl enable telegraf
 ```
 
 验证是否有InfluxDB Metrics
-
 ```
 [root@localhost ~]# influx
 Connected to http://localhost:8086 version 1.8.3
 InfluxDB shell version: 1.8.3
 > 
 ```
-
 ```
 > USE vmware
 Using database vmware 
 ```
-
 ```
 > SHOW MEASUREMENTS
 name: measurements
@@ -236,7 +222,6 @@ vsphere_vm_virtualDisk
 - 安装后datastore dashboard报错
 ![](/img/2020-12-22/11.png)
 解决办法:
-
 ```
 # wget https://grafana.com/api/plugins/grafana-piechart-panel/versions/1.6.1/download
 # unzip unzip grafana-piechart-panel-1.6.1.zip
