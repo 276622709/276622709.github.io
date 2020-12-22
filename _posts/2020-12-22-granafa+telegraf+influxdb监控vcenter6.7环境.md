@@ -21,14 +21,13 @@ typora-root-url: ..
 ## 环境描述
 - 1台vcenter appliance+3台esxi6.7+若干台虚拟机组成的vsan环境  
 - granafa+telegraf+influxdb所在环境为一台centos7.4虚拟机  
-
-  granafa版本7.3.4    
-  telegraf版本1.16.3  
-  influxdb版本1.8.3
+   + granafa版本7.3.4    
+   + telegraf版本1.16.3  
+   + influxdb版本1.8.3
   
 ## 安装并配置过程
 1.安装granafa
-+ 添加yum库
+- 添加yum库
 vim /etc/yum.repos.d/grafana.repo  
 ```bash
 [grafana]
@@ -41,13 +40,13 @@ gpgkey=https://packages.grafana.com/gpg.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 ```
-+ 启动grafana-server服务
+- 启动grafana-server服务
 ```bash
 #sudo systemctl daemon-reload
 #sudo systemctl start grafana-server
 #sudo systemctl status grafana-server
 ```
-+ 设置开机自启动
+- 设置开机自启动
 ```bash
 #systemctl enable grafana-server
 ```
