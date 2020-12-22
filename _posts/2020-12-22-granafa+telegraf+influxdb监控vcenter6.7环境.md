@@ -113,7 +113,7 @@ EOF
 ##
 [[inputs.vsphere]]
 #### List of vCenter URLs to be monitored. These three lines must be uncommented
-### and edited for the plugin to work.
+### and edited for the plugin to work..
   interval = "20s"
   vcenters = [ "https://10.10.90.165/sdk" ]
   username = "administrator@vsphere.local"
