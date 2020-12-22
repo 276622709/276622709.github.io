@@ -89,7 +89,6 @@ EOF
 ```
 # sudo systemctl start influxdb && sudo systemctl enable influxdb
 ```
-
 [参考文档](https://computingforgeeks.com/install-grafana-and-influxdb-on-centos-7/)
 
 3.安装并配置telegraf
@@ -199,7 +198,6 @@ vsphere_vm_virtualDisk
 ```
 
 如查看到有以上metrics输出，说明telegraf能够正确获取vcenter数据并存入到influxdb中  
-
 [参考文档](https://computingforgeeks.com/how-to-monitor-vmware-esxi-with-grafana-and-telegraf/)
 
 4.添加influxdb数据源
@@ -235,7 +233,6 @@ vsphere_vm_virtualDisk
 # unzip unzip grafana-piechart-panel-1.6.1.zip
 # mv grafana-piechart-panel/ /var/lib/grafana/plugins/grafana-piechart-panel/
 ```
-
 [参考文档](https://grafana.com/grafana/plugins/grafana-piechart-panel)
 
 - dashboard上cpu使用率不正确
@@ -251,29 +248,21 @@ vsphere_vm_virtualDisk
   - 应用后进行保存
   ![](/img/2020-12-22/17.png)
   ![](/img/2020-12-22/18.png)
-
-
-
 [参考文档](https://grafana.com/grafana/dashboards/8159/reviews)
 
 ## 监控界面展示
 
 添加后一共四个模板，分别对应全局dashboard，esxi主机dashboard，vm虚拟机dashboard和数据存储dashboard
-
 - vmware vsphere全局dashboard
-
 ![](/img/2020-12-22/19.png)
 
 - vmware vsphere主机界面展示
-
 ![](/img/2020-12-22/20.png)
 
 - vmware vm虚拟机界面展示
-
 ![](/img/2020-12-22/21.png)
 
 - vmware datastore界面展示
-
 ![](/img/2020-12-22/22.png)
 
 
