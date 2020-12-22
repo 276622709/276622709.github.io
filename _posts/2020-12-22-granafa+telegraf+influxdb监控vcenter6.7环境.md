@@ -24,7 +24,6 @@ typora-root-url: ..
   - granafa版本7.3.4  
   - telegraf版本1.16.3
   - influxdb版本1.8.3
-  
 ## 安装并配置过程
 1.安装granafa
 - 添加yum库  
@@ -51,13 +50,14 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 #systemctl enable grafana-server
 ```
 开机浏览器访问http://ip:3000    
-默认用户名和密码都是admin    
+默认用户名和密码都是admin   
 ![](/img/2020-12-22/1.png)
 首次登陆会要求更换密码    
 ![](/img/2020-12-22/2.png)
-官网文档[https://grafana.com/docs/grafana/latest/installation/rpm/](https://grafana.com/docs/grafana/latest/installation/rpm/)  
+官网文档[https://grafana.com/docs/grafana/latest/installation/rpm/](https://grafana.com/docs/grafana/latest/installation/rpm/)
 
 2.安装并配置influxdb
+- 编辑yum库文件
 ```
 # cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
 [influxdb]
@@ -80,7 +80,6 @@ EOF
 ```
 # sudo systemctl start influxdb && sudo systemctl enable influxdb
 ```
-
 [参考文档](https://computingforgeeks.com/install-grafana-and-influxdb-on-centos-7/)  
 
 3.安装并配置telegraf  
@@ -133,14 +132,13 @@ EOF
 
   max_query_metrics = 256
   collect_concurrency = 3
-
 ```
-- 重新启动服务，加载刚修改的配置  
+- 重新启动服务，加载刚修改的配置
 ```
 sudo systemctl restart telegraf
 sudo systemctl enable telegraf
 ```
-验证是否有InfluxDB Metrics  
+验证是否有InfluxDB Metrics
 ```
 [root@localhost ~]# influx
 Connected to http://localhost:8086 version 1.8.3
@@ -185,10 +183,8 @@ vsphere_vm_sys
 vsphere_vm_virtualDisk
 > 
 ```
-
 如查看到有以上metrics输出，说明telegraf能够正确获取vcenter数据并存入到influxdb中    
 [参考文档](https://computingforgeeks.com/how-to-monitor-vmware-esxi-with-grafana-and-telegraf/)  
-
 4.添加influxdb数据源
 ![](/img/2020-12-22/3.png)
 - 选择influxdb数据源
