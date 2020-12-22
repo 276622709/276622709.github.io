@@ -22,10 +22,9 @@ typora-root-url: ..
 - 1台vcenter appliance+3台esxi6.7+若干台虚拟机组成的vsan环境  
 - granafa+telegraf+influxdb所在环境为一台centos7.4虚拟机  
 
-granafa版本7.3.4    
-telegraf版本1.16.3  
-influxdb版本1.8.3
-  
+  granafa版本7.3.4    
+  telegraf版本1.16.3  
+  influxdb版本1.8.3  
 ## 安装并配置过程
 1.安装granafa
 - 添加yum库  
