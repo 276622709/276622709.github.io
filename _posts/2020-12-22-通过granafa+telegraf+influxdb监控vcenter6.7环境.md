@@ -53,8 +53,8 @@ sudo systemctl status grafana-server
 ```bash
 systemctl enable grafana-server
 ```
-开机浏览器访问http://ip:3000
-默认用户名和密码都是admin
+开机浏览器访问http://ip:3000  
+默认用户名和密码都是admin  
 ![](/img/2020-12-22/1.png)
 首次登陆会要求更换密码
 ![](/img/2020-12-22/2.png)
@@ -72,25 +72,18 @@ gpgcheck = 1
 gpgkey = https://repos.influxdata.com/influxdb.key
 EOF
 ```
-
 - 更新yum缓存
-
 ```
 # sudo yum makecache fast
 ```
-
 - 安装influxdb
-
 ```
 # sudo yum -y install influxdb vim curl
 ```
-
 - 开启influxdb服务并设置成开机自启动
-
 ```
 # sudo systemctl start influxdb && sudo systemctl enable influxdb
 ```
-
 [参考文档](https://computingforgeeks.com/install-grafana-and-influxdb-on-centos-7/)
 
 3.安装并配置telegraf
