@@ -108,7 +108,7 @@ EOF
     timeout = "0s"
 ```
 
-- 配置vsphere input插件 ,将其中的vcenter信息换成你的
+- 配置vsphere input插件,将其中的vcenter信息换成你的
 ```
 [[inputs.vsphere]]
 ### List of vCenter URLs to be monitored. These three lines must be uncommented
@@ -215,23 +215,16 @@ vsphere_vm_virtualDisk
   - 下载dashboard
 
   ![](/img/2020-12-22/6.png)
-
   - 其他dashboard下载位置
-
   ![](/img/2020-12-22/7.png)
-
   - 通过granafa上传dashboard的json文件
-
 ![](/img/2020-12-22/8.png)
-
 ![](/img/2020-12-22/9.png)
-
 - 添加influxdb数据源
-
 ![](/img/2020-12-22/10.png)
 
 
-5.默认dashboard存在的问题及解决办法
+6.默认dashboard存在的问题及解决办法
 
 - 安装后datastore dashboard报错
 
