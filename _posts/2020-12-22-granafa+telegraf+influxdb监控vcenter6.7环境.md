@@ -21,10 +21,8 @@ typora-root-url: ..
 - 1台vcenter appliance+3台esxi6.7+若干台虚拟机组成的vsan环境
 
 - granafa+telegraf+influxdb所在环境为一台centos7.4虚拟机
-  - granafa版本7.3.4
-  
+  - granafa版本7.3.4  
   - telegraf版本1.16.3
-
   - influxdb版本1.8.3
   
 ## 安装并配置过程
@@ -95,9 +93,7 @@ EOF
 [参考文档](https://computingforgeeks.com/install-grafana-and-influxdb-on-centos-7/)
 
 3.安装并配置telegraf
-
 - 安装telegraf并配置和influxdb连接方式
-
 ```
 # sudo yum -y install telegraf
 ```
@@ -113,7 +109,6 @@ EOF
 ```
 
 - 配置vsphere input插件 ,将其中的vcenter信息换成你的
-
 ```
 [[inputs.vsphere]]
 ### List of vCenter URLs to be monitored. These three lines must be uncommented
@@ -149,30 +144,24 @@ EOF
 
   max_query_metrics = 256
   collect_concurrency = 3
-
 ```
 
 - 重新启动服务，加载刚修改的配置
-
 ```
 sudo systemctl restart telegraf
 sudo systemctl enable telegraf
 ```
-
-验证是否有InfluxDB Metrics
-
+验证是否有InfluxDB Metrics  
 ```
 [root@localhost ~]# influx
 Connected to http://localhost:8086 version 1.8.3
 InfluxDB shell version: 1.8.3
 > 
 ```
-
 ```
 > USE vmware
 Using database vmware 
 ```
-
 ```
 > SHOW MEASUREMENTS
 name: measurements
@@ -213,15 +202,10 @@ vsphere_vm_virtualDisk
 [参考文档](https://computingforgeeks.com/how-to-monitor-vmware-esxi-with-grafana-and-telegraf/)
 
 4.添加influxdb数据源
-
 ![](/img/2020-12-22/3.png)
-
 - 选择influxdb数据源
-
 ![](/img/2020-12-22/4.png)
-
 - 添加influxdb信息
-
 ![](/img/2020-12-22/5.png)
 
 5.添加granafa上关于vcenter6.7的dashboard
@@ -246,9 +230,6 @@ vsphere_vm_virtualDisk
 
 ![](/img/2020-12-22/10.png)
 
-
-
----
 
 5.默认dashboard存在的问题及解决办法
 
