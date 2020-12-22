@@ -108,7 +108,8 @@ EOF
     timeout = "0s"
 ```
 
-- 配置vsphere input插件,将其中的vcenter信息换成你的  
+- 配置vsphere input插件,将其中的vcenter信息换成你的
+
 ```
 ###
 [[inputs.vsphere]]
