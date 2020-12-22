@@ -191,6 +191,7 @@ vsphere_vm_virtualDisk
 ![](/img/2020-12-22/4.png)
 - 添加influxdb信息
 ![](/img/2020-12-22/5.png)
+
 5.添加granafa上关于vcenter6.7的dashboard
 - 通过granafa官网dashboard库，下载对应的dashboard,并上传,dashboard[地址](https://grafana.com/grafana/dashboards/8159)
   - 下载dashboard
@@ -202,8 +203,8 @@ vsphere_vm_virtualDisk
 ![](/img/2020-12-22/9.png)
 - 添加influxdb数据源
 ![](/img/2020-12-22/10.png)
----
-5.默认dashboard存在的问题及解决办法
+
+6.默认dashboard存在的问题及解决办法
 - 安装后datastore dashboard报错
 ![](/img/2020-12-22/11.png)
 解决办法:
@@ -237,6 +238,7 @@ vsphere_vm_virtualDisk
 ![](/img/2020-12-22/21.png)
 - vmware datastore界面展示
 ![](/img/2020-12-22/22.png)
+
 
 
 声明：本博客的<img class="original" src='/img/original.png'>原创文章，都是本人平时学习所做的笔记，转载请标注出处，谢谢合作。
