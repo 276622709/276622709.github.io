@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 通过granafa+telegraf+influxdb监控vcenter6.7环境
+title: granafa+telegraf+influxdb监控vcenter6.7环境
 date: 2020-12-22
 author: ZMY
 header-img: ../img/monitor_alarm_background.jpg
@@ -13,7 +13,7 @@ tags:
 typora-root-url: ..
 
 ---
-## <img class="original" src='/img/original.png'> 通过granafa+telegraf+influxdb监控vcenter6.7环境
+## <img class="original" src='/img/original.png'> granafa+telegraf+influxdb监控vcenter6.7环境
 
 ## 目的
 通过granafa平台展示vcenter6.7里面的数据
@@ -31,11 +31,9 @@ typora-root-url: ..
 
 1.安装granafa
 - 添加yum库
-
 ```
 # vim /etc/yum.repos.d/grafana.repo
 ```
-
 ```bash
 [grafana]
 name=grafana
@@ -47,15 +45,15 @@ gpgkey=https://packages.grafana.com/gpg.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 ```
-- 启动grafana-server服务
 
+- 启动grafana-server服务
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl start grafana-server
 sudo systemctl status grafana-server
 ```
-- 设置开机自启动
 
+- 设置开机自启动
 ```bash
 systemctl enable grafana-server
 ```
@@ -68,7 +66,6 @@ systemctl enable grafana-server
 
 2.安装并配置influxdb
 - 创建influxdb yum配置文件
-
 ```
 # cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
 [influxdb]
@@ -79,21 +76,22 @@ gpgcheck = 1
 gpgkey = https://repos.influxdata.com/influxdb.key
 EOF
 ```
-- 更新yum缓存
 
+- 更新yum缓存
 ```
 # sudo yum makecache fast
 ```
-- 安装influxdb
 
+- 安装influxdb
 ```
 # sudo yum -y install influxdb vim curl
 ```
-- 开启influxdb服务并设置成开机自启动
 
+- 开启influxdb服务并设置成开机自启动
 ```
 # sudo systemctl start influxdb && sudo systemctl enable influxdb
 ```
+
 [参考文档](https://computingforgeeks.com/install-grafana-and-influxdb-on-centos-7/)
 
 3.安装并配置telegraf
