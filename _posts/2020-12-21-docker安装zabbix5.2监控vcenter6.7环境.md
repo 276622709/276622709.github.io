@@ -15,11 +15,9 @@ typora-root-url: ..
 
 ## 目的
 
-现在驻场的地方使用的虚拟化平台是vcenter6.7环境，因此急需一个监控平台去及时发现问题，方便运维管理
-
-在开源解决方案里，zabbix是一个不错的选择。并且随着docker的发展越来越迅速，很多开源软件都提供了
-
-docker的安装方式，故这次选择docker安装zabbix5.2环境用来监控vcenter6.7环境
+现在驻场的地方使用的虚拟化平台是vcenter6.7环境，因此急需一个监控平台去及时发现问题，方便运维管理  
+在开源解决方案里，zabbix是一个不错的选择。并且随着docker的发展越来越迅速，很多开源软件都提供了  
+docker的安装方式，故这次选择docker安装zabbix5.2环境用来监控vcenter6.7环境  
 
 ## 环境描述
 
@@ -36,7 +34,6 @@ docker的安装方式，故这次选择docker安装zabbix5.2环境用来监控vc
 1.安装docker环境
 
 - 替换yum源
-
 ```
 # cd /etc/yum.repos.d/
 # mkdir repo_bak
