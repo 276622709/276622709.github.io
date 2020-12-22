@@ -20,7 +20,8 @@ typora-root-url: ..
 
 ## 环境描述
 - 1台vcenter appliance+3台esxi6.7+若干台虚拟机组成的vsan环境  
-- granafa+telegraf+influxdb所在环境为一台centos7.4虚拟机  
+- granafa+telegraf+influxdb所在环境为一台centos7.4虚拟机 
+
    + granafa版本7.3.4    
    + telegraf版本1.16.3  
    + influxdb版本1.8.3
