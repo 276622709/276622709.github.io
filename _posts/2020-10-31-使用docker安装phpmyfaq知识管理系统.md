@@ -25,15 +25,13 @@ phpmyfaq3.0.6
 1.安装docker环境
 
 替换yum源  
-    
+   
 ```
-
 # cd /etc/yum.repos.d/
 # mkdir repo_bak
 # mv *.repo repo_bak/
 # wget http://mirrors.aliyun.com/repo/Centos-7.repo
 # yum install epel-release -y
-
 ```
 
 安装docker引擎    
