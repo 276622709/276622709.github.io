@@ -3,7 +3,7 @@ layout: post
 title: requests请求返回对象中content和text编码问题
 date: 2021-01-07
 author: ZMY
-header-img: ../img/2021-01-07/background.jpg
+header-img: ../img/2021-01-07/background.png
 catalog : true
 tags:
    - requests
