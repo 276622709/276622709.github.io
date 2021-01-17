@@ -21,7 +21,7 @@ typora-root-url: ..
 # pip install requests
 # req_test.py
 import requests
-res = requests.get("[https://www.baidu.com")](https://www.baidu.com))
+res = requests.get("https://www.baidu.com")
 print(res.content)
 print(res.text)
 
