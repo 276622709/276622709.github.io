@@ -23,7 +23,6 @@ typora-root-url: ..
 ##  k8s安装和环境配置
 
 **以下操作在所有节点同时操作**
-
 - 安装docker
 ```
 # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
@@ -55,7 +54,6 @@ eof
 ```
 # setenforce 0
 ```
-
 永久生效
 ```
 # vim /etc/sysconfig/selinux
