@@ -99,7 +99,6 @@ net.bridge.bridge-nf-call-iptables = 1
   ],
   "exec-opts": ["native.cgroupdriver=systemd"]
 }
-
 ```
 
 - 重启docker服务
