@@ -213,7 +213,7 @@ eof
 
   当有需求需要对master进行可靠性保障即HA时，需要此参数，后面添加你需要规划的load-balance的地址
 
-- kubeadm init初始化成功会出现以下提示**(最好保留此结果，为了方便以后node加入集群使用)**
+- kubeadm init初始化成功会出现以下提示 **(最好保留此结果，为了方便以后node加入集群使用)**
 
   ```
   Your Kubernetes control-plane has initialized successfully!
@@ -390,7 +390,6 @@ kubernetes-dashboard        NodePort    10.103.154.22   <none>        443:31339/
 ![](/img/2021-01-22/1.png)
 
 
-
 ## node节点操作
 
 根据kubeadm init返回提示在各个node上如下操作加入k8s集群即可**(请按照自己环境的返回结果粘贴)**
@@ -545,7 +544,7 @@ nginx-deployment-7848d4b86f-dqxxt   1/1     Running   0          24h   10.244.2.
         port: 80
         targetPort: 80
     type: NodePort
-eof
+  eof
   ```
 
   修改可映射端口范围，默认为30000-32767，添加下面字段到/etc/kubernetes/manifests/kube-apiserver.yaml中,找到- --service-cluster-ip-range=10.96.0.0/12，在这个下面填入
