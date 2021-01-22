@@ -88,7 +88,7 @@ net.bridge.bridge-nf-call-iptables = 1
 #sysctl -p
 ```
 
-- 修改/etc/docker/daemon.json
+- 修改/etc/docker/daemon.json  
 修改节点cgroup的驱动方式为systemd  
 ```
 {
