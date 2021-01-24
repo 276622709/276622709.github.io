@@ -3,7 +3,7 @@ layout: post
 title: centos7安装和部署kubernetes实践
 date: 2021-01-22
 author: ZMY
-header-img: ../img/2021-01-22/background.png
+header-img: ../img/2021-01-07/background.png
 catalog : true
 tags:
    - kubernetes
@@ -277,8 +277,7 @@ metadata:
   name: admin-user
   namespace: kubernetes-dashboard
 EOF
-```
-
+```  
 创建一个ClusterRoleBinding  
 ```
 # cat <<EOF | kubectl apply -f -
