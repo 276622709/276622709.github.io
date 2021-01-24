@@ -230,9 +230,9 @@ The connection to the server raw.githubusercontent.com was refused - did you spe
 ```
 
 - 查看组件状态
+
 ```
 [root@master ~]# kubectl get cs
-
 Warning: v1 ComponentStatus is deprecated in v1.19+
 NAME                 STATUS      MESSAGE                                                                                     
 scheduler            Unhealthy   Get "http://127.0.0.1:10251/healthz": dial tcp 127.0.0.1:10251: connect: connection refused   
