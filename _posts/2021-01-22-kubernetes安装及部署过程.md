@@ -278,9 +278,8 @@ metadata:
   namespace: kubernetes-dashboard
 EOF
 ```  
-创建一个ClusterRoleBinding  
-```
-# cat <<EOF | kubectl apply -f -
+创建一个ClusterRoleBinding
+```  cat <<EOF | kubectl apply -f -
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
