@@ -224,22 +224,23 @@ eof
 # kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
-如果报如下错误
+如果报如下错误  
 ```
 The connection to the server raw.githubusercontent.com was refused - did you specify the right host or port?
 ```
 
-添加下列行到/etc/hosts，然后重新执行命令即可
+添加下列行到/etc/hosts，然后重新执行命令即可  
 ```
 199.232.28.133 raw.githubusercontent.com
 ```
 
 - 查看组件状态
+
 ```
 [root@master ~]# kubectl get cs
 
 Warning: v1 ComponentStatus is deprecated in v1.19+
-NAME                 STATUS      MESSAGE                                                                                       ERROR
+NAME                 STATUS      MESSAGE                                                                                     
 scheduler            Unhealthy   Get "http://127.0.0.1:10251/healthz": dial tcp 127.0.0.1:10251: connect: connection refused   
 controller-manager   Unhealthy   Get "http://127.0.0.1:10252/healthz": dial tcp 127.0.0.1:10252: connect: connection refused   
 etcd-0               Healthy     {"health":"true"} 
