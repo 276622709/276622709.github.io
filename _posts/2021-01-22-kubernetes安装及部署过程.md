@@ -317,15 +317,16 @@ kubernetes-dashboard        NodePort    10.103.154.22   <none>        443:31339/
 ```
 然后打开浏览器访问https://node-ip:31339  输入之前的token即可（nodeip为集群中所有的节点的任意ip即可，192.168.140.210，192.168.140.211，192.168.140.212）
 ![](/img/2021-01-22/1.png)
+
 ## node节点操作
 
-根据kubeadm init返回提示在各个node上如下操作加入k8s集群即可**(请按照自己环境的返回结果粘贴)**
+  根据kubeadm init返回提示在各个node上如下操作加入k8s集群即可**(请按照自己环境的返回结果粘贴)**
 ```
 kubeadm join 192.168.140.210:6443 --token jtraq9.sr9ovpi9golptuhh \
     --discovery-token-ca-cert-hash sha256:6ad1ec7eb4328f95b393d675dc71d7742b2cda6c96d6baac0efa373c69bd7d85 
 ```
 
-在master节点上查看node节点状态,发现node1和node2状态为NotReady ，查找原因
+  在master节点上查看node节点状态,发现node1和node2状态为NotReady ，查找原因
 ```
 [root@master ~]# kubectl get nodes
 NAME     STATUS     ROLES                  AGE     VERSION
@@ -334,7 +335,7 @@ node1    NotReady   <none>                 27s     v1.20.2
 node2    NotReady   <none>                 6s      v1.20.2
 ```
 
-查看kubelet日志,发现网络组件没有安装
+  查看kubelet日志,发现网络组件没有安装
 ```
 [root@node1 ~]# journalctl -f -u kubelet
 -- Logs begin at 二 2021-01-19 00:51:08 CST. --
