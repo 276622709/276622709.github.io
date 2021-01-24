@@ -65,7 +65,6 @@ SELINUX=disabled
 ```
 # swapoff -a
 ```
-
 永久生效，编辑/etc/fstab 将下面这行注释掉(即前面填个#)，后重启
 ```
 # /dev/mapper/centos-swap swap                    swap    defaults        0 0
@@ -82,7 +81,6 @@ SELINUX=disabled
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 ```
-
 永久生效
 ```
 #sysctl -p
@@ -106,7 +104,6 @@ net.bridge.bridge-nf-call-iptables = 1
 # systemctl restart docker
 # systemctl daemon-reload
 ```
-
 以上参考官网文档https://docs.docker.com/engine/install/centos/    
 
 - 新增k8s源并更新缓存
