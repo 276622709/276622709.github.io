@@ -230,7 +230,6 @@ The connection to the server raw.githubusercontent.com was refused - did you spe
 ```
 
 - 查看组件状态
-
 ```
 [root@master ~]# kubectl get cs
 
@@ -246,7 +245,6 @@ kube-controller-manager.yaml 的26行，kube-scheduler.yaml的19行 前面加个
 ```
 # systemctl restart kubelet
 ```
-
 再次查看组件状态，恢复正常
 ```
 [root@master manifests]# kubectl get cs
@@ -256,7 +254,6 @@ scheduler            Healthy   ok
 controller-manager   Healthy   ok                  
 etcd-0               Healthy   {"health":"true"}  
 ```
-
 命令补全法
 ```
 # source  <(kubectl  completion  bash)
@@ -268,12 +265,10 @@ k8s提供了一个可图形化管理集群的工具dashboard
 ```
 # kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 ```
-
 使用 kubectl 启动 Dashboard，命令如下：
 ```
 # kubectl proxy
 ```
-
 kubectl 会使得 Dashboard 可以通过 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ 访问,但是需要token，下面生成token
 ```
 # cat <<EOF | kubectl apply -f -
@@ -284,7 +279,6 @@ metadata:
   namespace: kubernetes-dashboard
 EOF
 ```
-
 创建一个ClusterRoleBinding
 ```
 # cat <<EOF | kubectl apply -f -
@@ -302,23 +296,19 @@ subjects:
   namespace: kubernetes-dashboard
 EOF
 ```
-
 下面命令得到token
 ```
 # kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
 ```
-
 得到的token类似
 ```
 eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLXY1N253Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiIwMzAzMjQzYy00MDQwLTRhNTgtOGE0Ny04NDllZTliYTc5YzEiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZXJuZXRlcy1kYXNoYm9hcmQ6YWRtaW4tdXNlciJ9.Z2JrQlitASVwWbc-s6deLRFVk5DWD3P_vjUFXsqVSY10pbjFLG4njoZwh8p3tLxnX_VBsr7_6bwxhWSYChp9hwxznemD5x5HLtjb16kI9Z7yFWLtohzkTwuFbqmQaMoget_nYcQBUC5fDmBHRfFvNKePh_vSSb2h_aYXa8GV5AcfPQpY7r461itme1EXHQJqv-SN-zUnguDguCTjD80pFZ_CmnSE1z9QdMHPB8hoB4V68gtswR1VLa6mSYdgPwCHauuOobojALSaMc3RH7MmFUumAgguhqAkX3Omqd3rJbYOMRuMjhANqd08piDC3aIabINX6gP5-Tuuw2svnV6NYQ
 ```
-
 完成以上操作正常情况下只能在master服务器上打开dashboard，如若想可以远程访问dashboard需要如下操作
 ```
 # kubectl -n kubernetes-dashboard edit service kubernetes-dashboard
 将type: ClusterIP替换成type: NodePort
 ```
-
 修改后，查看现在dashboard映射的端口号(我的实验环境为31339)
 ```
 [root@master ~]# kubectl -n kubernetes-dashboard  get services
@@ -326,10 +316,8 @@ NAME                        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   
 dashboard-metrics-scraper   ClusterIP   10.102.147.64   <none>        8000/TCP        110m
 kubernetes-dashboard        NodePort    10.103.154.22   <none>        443:31339/TCP   110m
 ```
-
 然后打开浏览器访问https://node-ip:31339  输入之前的token即可（nodeip为集群中所有的节点的任意ip即可，192.168.140.210，192.168.140.211，192.168.140.212）
 ![](/img/2021-01-22/1.png)
-
 ## node节点操作
 
 根据kubeadm init返回提示在各个node上如下操作加入k8s集群即可**(请按照自己环境的返回结果粘贴)**
@@ -414,29 +402,23 @@ spec:
         - containerPort: 80
 eof
 ```
-
 通过deployment.yml文件创建应用
 ```
 # kubectl apply -f deployment.yml
 ```
-
 查看deployment状态
 ```
 [root@master ~]# kubectl get deployment
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-deployment   2/2     2            2           92s
-
 ```
-
 查看pods状态
 ```
 [root@master ~]# kubectl get pod -o wide
 NAME                                READY   STATUS    RESTARTS   AGE     IP           NODE    NOMINATED NODE   READINESS GATES
 nginx-deployment-7848d4b86f-2sslj   1/1     Running   0          3m18s   10.244.1.2   node1   <none>           <none>
 nginx-deployment-7848d4b86f-dqxxt   1/1     Running   0          3m18s   10.244.2.4   node2   <none>           <none>
-
 ```
-
 验证app访问  
 可以在master,node1,node2这三台机器上通过浏览器访问10.244.1.2和10.244.2.4，看到nginx访问页面,为了方便区分2个app，修改nginx中默认的index.html页面内容
 ```
@@ -470,18 +452,15 @@ nginx-deployment-7848d4b86f-dqxxt   1/1     Running   0          24h   10.244.2.
     type: NodePort
   eof
   ```
-
   修改可映射端口范围，默认为30000-32767，添加下面字段到/etc/kubernetes/manifests/kube-apiserver.yaml中,找到- --service-cluster-ip-range=10.96.0.0/12，在这个下面填入 
   ```
   --service-node-port-range=1-65535
   ```
-
    重启kubelet  
   ```
   # systemctl daemon-reload
   # systemctl restart kubelet
   ```
-
   创建service
   ```
   # kubectl apply -f service_myapp.yml
