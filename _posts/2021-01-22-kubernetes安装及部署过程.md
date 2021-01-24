@@ -229,8 +229,7 @@ The connection to the server raw.githubusercontent.com was refused - did you spe
 199.232.28.133 raw.githubusercontent.com
 ```
 
-- 查看组件状态
-
+- 查看组件状态  
 ```
 [root@master ~]# kubectl get cs
 Warning: v1 ComponentStatus is deprecated in v1.19+
@@ -279,7 +278,7 @@ metadata:
   namespace: kubernetes-dashboard
 EOF
 ```
-创建一个ClusterRoleBinding
+创建一个ClusterRoleBinding  
 ```
 # cat <<EOF | kubectl apply -f -
 apiVersion: rbac.authorization.k8s.io/v1
