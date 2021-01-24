@@ -208,24 +208,22 @@ eof
   # kubeadm reset
   ```
 
-根据kubeadm init成功后提示进行以下几个操作步骤
+  根据kubeadm init成功后提示进行以下几个操作步骤
 - 更换KUBECONFIG环境变量(我是root用户，如果你是普通用户，请根据初始化成功提示做相应操作)
   ```
   # echo "export KUBECONFIG=/etc/kubernetes/admin.conf" >> ~/.bash_profile
   # source ~/.bash_profile
   ```
 
-- 安装网络插件 
+- 安装网络插件  
 安装网络插件，默认情况下各个pods之间是不能通信的，因此为了各pod之间能够通信，这里安装flannel插件
 ```
 # kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
-
 如果报如下错误  
 ```
 The connection to the server raw.githubusercontent.com was refused - did you specify the right host or port?
 ```
-
 添加下列行到/etc/hosts，然后重新执行命令即可  
 ```
 199.232.28.133 raw.githubusercontent.com
