@@ -13,7 +13,6 @@ typora-root-url: ..
 
 ## <img class="original" src='/img/original.png'>分析harbor容器的docker-compose.yml文件生成过程
 
-## 背景
 
 根据官网文档安装harbor的过程中发现，harbor容器的安装过程极为简单，主要涉及几个操作
 - 解压缩harbor-online压缩包
