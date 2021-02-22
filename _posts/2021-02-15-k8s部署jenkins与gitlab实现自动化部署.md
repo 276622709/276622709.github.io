@@ -1,6 +1,6 @@
 ---
 layout: post
-title: k8s部署jenkins
+title: k8s部署jenkins与gitlab实现自动化部署
 date: 2021-02-15
 author: ZMY
 header-img: ../img/2021-02-15/background.png
@@ -165,7 +165,7 @@ $ kubectl logs <pod_name> -n jenkins
 
 **gitlab安装过程(略)**
 
-gitlab配置过程请参考前一篇博客[K8S上搭建gitlab]()  
+gitlab配置过程请参考前一篇博客[K8S上搭建gitlab](https://276622709.github.io/2021/02/07/k8s%E9%83%A8%E7%BD%B2gitlab/)  
 
 **gitlab配置过程**
 
