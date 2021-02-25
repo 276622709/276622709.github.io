@@ -27,9 +27,9 @@ typora-root-url: ..
 
 前面2篇blog讲了gitlab进行代码上传后，触发jenkins自动化构建并执行自动化脚本过程
 
-[gitlab+jenkins+harbor持续集成(gitlab篇)](http://)
+[gitlab+jenkins+harbor持续集成(gitlab篇)](https://276622709.github.io/2021/02/07/gitlab+jenkins+harbor%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90(gitlab%E7%AF%87)/)
 
-[gitlab+jenkins+harbor持续集成(jenkins篇)](http://)
+[gitlab+jenkins+harbor持续集成(jenkins篇)](https://276622709.github.io/2021/02/15/gitlab+jenkins+harbor%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90(jenkins%E7%AF%87)/)
 
 **harbor安装过程**
 
@@ -184,9 +184,9 @@ git客户端提交
 
 通过如上操作步骤完成了gitlab+jenkins+harbor的持续集成项目的全部过程，对于gitlab和jenkins的安装和部署
 
-gitlab安装过程，请参考上一篇博客[]()
+gitlab安装过程，请参考上一篇博客[gitlab+jenkins+harbor持续集成(gitlab篇)](https://276622709.github.io/2021/02/07/gitlab+jenkins+harbor%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90(gitlab%E7%AF%87)/)
 
-jenkins安装及配置过程，请参考上一篇博客[]()
+jenkins安装及配置过程，请参考上一篇博客[gitlab+jenkins+harbor持续集成(jenkins篇)](https://276622709.github.io/2021/02/15/gitlab+jenkins+harbor%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90(jenkins%E7%AF%87)/)
 
 
 
