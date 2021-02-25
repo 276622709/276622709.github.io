@@ -40,7 +40,7 @@ $ kubectl create namespace jenkins
 $ kubectl get namespaces
 ```
 
-编辑jenkins-deployment.yaml用于创建jenkins
+编辑jenkins-deployment.yaml用于创建jenkins  
 这里对官方文件修改了volumeMounts和securityContext对应值，为了之后使用docker in docker功能做准备
 
 ```
