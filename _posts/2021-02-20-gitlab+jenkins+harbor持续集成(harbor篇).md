@@ -113,7 +113,7 @@ web访问http://192.168.140.210
 **部署难点**
 
 由于jenkins容器中需要完成docker build、docker push等操作，默认jenkins容器中不含有docker命令  
-有俩种解决办法,第一种在jenkins容器中直接安装docker环境，操作了一遍后发现修改daemon.json后docker服务无法重启，无法使"insecure-registries" : ["192.168.140.210:5000"]生效，因此采用了第二种方法即将docker的socket和docker命令在jenkins启动时挂载到jenkins里，并且在yml文件中添加privilege和runasroot权限，过程请参考[gitlab+jenkins+harbor持续集成(jenkins篇)](http://)中jenkins-deployment.yaml文件内容，这里不再复述
+有俩种解决办法,第一种在jenkins容器中直接安装docker环境，操作了一遍后发现修改daemon.json后docker服务无法重启，无法使"insecure-registries" : ["192.168.140.210:5000"]生效，因此采用了第二种方法即将docker的socket和docker命令在jenkins启动时挂载到jenkins里，并且在yml文件中添加privilege和runasroot权限，过程请参考[gitlab+jenkins+harbor持续集成(jenkins篇)](https://276622709.github.io/2021/02/15/gitlab+jenkins+harbor%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90(jenkins%E7%AF%87)/)中jenkins-deployment.yaml文件内容，这里不再复述
 
 登陆jenkins平台，找到之前创建的test项目修改jenkins的build过程中shell脚本内容
 
