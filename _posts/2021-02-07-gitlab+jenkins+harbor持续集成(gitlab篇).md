@@ -1,6 +1,6 @@
 ---
 layout: post
-title: k8s部署gitlab
+title: gitlab+jenkins+harbor持续集成(gitlab篇)
 date: 2021-02-07
 author: ZMY
 header-img: ../img/2021-02-07/background.png
@@ -11,16 +11,15 @@ tags:
 typora-root-url: ..
 ---
 
-## <img class="original" src='/img/original.png'>k8s部署gitlab
+## <img class="original" src='/img/original.png'>gitlab+jenkins+harbor持续集成(gitlab篇)
 
-**环境描述**
-
-| 主机名 | ip地址          | 操作系统                      | K8S版本 | 备注 |
-| ------ | --------------- | ----------------------------- | ------- | ---- |
-| master | 192.168.140.210 | CentOS Linux release 7.4.1708 | v1.20.2 |      |
-| node1  | 192.168.140.211 | CentOS Linux release 7.4.1708 | v1.20.2 |      |
-| node2  | 192.168.140.212 | CentOS Linux release 7.4.1708 | v1.20.2 |      |
-| node3  | 192.168.140.213 | CentOS Linux release 7.4.1708 | v1.20.2 |      |
+| 主机名/功能 | ip地址/访问方式              | 操作系统                      | 版本    | 备注   |
+| ----------- | ---------------------------- | ----------------------------- | ------- | ------ |
+| master      | 192.168.140.210              | CentOS Linux release 7.4.1708 | v1.20.2 | 物理机 |
+| node1       | 192.168.140.211              | CentOS Linux release 7.4.1708 | v1.20.2 | 物理机 |
+| node2       | 192.168.140.212              | CentOS Linux release 7.4.1708 | v1.20.2 | 物理机 |
+| node3       | 192.168.140.213              | CentOS Linux release 7.4.1708 | v1.20.2 | 物理机 |
+| gitlab      | http://192.168.140.212:10000 |                               | v13.8.2 | 容器   |
 
 [官方gitlab项目地址](https://github.com/sameersbn/docker-gitlab)
 
@@ -195,7 +194,7 @@ To http://192.168.140.212:10000/root/django_docker.git
 
 
 搭建gitlab是为了配合jenkins完成代码自动化部署过程，在后面搭建jenkins博客中还会有涉及到gitlab操作的步骤，到时候一起介绍  
-blog已更新[k8s部署jenkins与gitlab实现自动化部署](https://276622709.github.io/2021/02/15/k8s%E9%83%A8%E7%BD%B2jenkins%E4%B8%8Egitlab%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/)
+blog已更新[gitlab+jenkins+harbor持续集成(jenkins篇)](https://276622709.github.io/2021/02/15/k8s%E9%83%A8%E7%BD%B2jenkins%E4%B8%8Egitlab%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/)
 
 
 

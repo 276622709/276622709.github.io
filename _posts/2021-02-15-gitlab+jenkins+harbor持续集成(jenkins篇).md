@@ -1,6 +1,6 @@
 ---
 layout: post
-title: k8s部署jenkins与gitlab实现自动化部署
+title: gitlab+jenkins+harbor持续集成(jenkins篇)
 date: 2021-02-15
 author: ZMY
 header-img: ../img/2021-02-15/background.png
@@ -11,16 +11,18 @@ tags:
 typora-root-url: ..
 ---
 
-## <img class="original" src='/img/original.png'>k8s部署jenkins与gitlab实现自动化部署
+## <img class="original" src='/img/original.png'>gitlab+jenkins+harbor持续集成(jenkins篇)
 
 **环境描述**
 
-| 主机名 | ip地址          | 操作系统                      | K8S版本 | 备注 |
-| ------ | --------------- | ----------------------------- | ------- | ---- |
-| master | 192.168.140.210 | CentOS Linux release 7.4.1708 | v1.20.2 |      |
-| node1  | 192.168.140.211 | CentOS Linux release 7.4.1708 | v1.20.2 |      |
-| node2  | 192.168.140.212 | CentOS Linux release 7.4.1708 | v1.20.2 |      |
-| node3  | 192.168.140.213 | CentOS Linux release 7.4.1708 | v1.20.2 |      |
+| 主机名/功能 | ip地址/访问方式               | 操作系统                      | 版本     | 备注   |
+| ----------- | ----------------------------- | ----------------------------- | -------- | ------ |
+| master      | 192.168.140.210               | CentOS Linux release 7.4.1708 | v1.20.2  | 物理机 |
+| node1       | 192.168.140.211               | CentOS Linux release 7.4.1708 | v1.20.2  | 物理机 |
+| node2       | 192.168.140.212               | CentOS Linux release 7.4.1708 | v1.20.2  | 物理机 |
+| node3       | 192.168.140.213               | CentOS Linux release 7.4.1708 | v1.20.2  | 物理机 |
+| gitlab      | http://192.168.140.212:10000  |                               | v13.8.2  | 容器   |
+| jenkins     | http://192.168.140.212:29584/ |                               | v2.263.3 | 容器   |
 
 官网文档[https://www.jenkins.io/doc/book/installing/kubernetes/](https://www.jenkins.io/doc/book/installing/kubernetes/)     
 
@@ -39,6 +41,7 @@ $ kubectl get namespaces
 ```
 
 编辑jenkins-deployment.yaml用于创建jenkins
+这里对官方文件修改了volumeMounts和securityContext对应值，为了之后使用docker in docker功能做准备
 
 ```
 apiVersion: apps/v1
@@ -63,9 +66,23 @@ spec:
         volumeMounts:
         - name: jenkins-home
           mountPath: /var/jenkins_home
+        - name: docker-socket
+          mountPath: /var/run/docker.sock
+        - name: docker-command
+          mountPath: /usr/bin/docker
+        securityContext:
+          privileged: true
+          runAsUser: 0
       volumes:
       - name: jenkins-home
         emptyDir: { }
+      - name: docker-socket
+        hostPath:
+          path: /var/run/docker.sock
+      - name: docker-command
+        hostPath:
+          path: /usr/bin/docker
+
 ```
 
 部署jenkins
@@ -165,7 +182,7 @@ $ kubectl logs <pod_name> -n jenkins
 
 **gitlab安装过程(略)**
 
-gitlab配置过程请参考前一篇博客[K8S上搭建gitlab](https://276622709.github.io/2021/02/07/k8s%E9%83%A8%E7%BD%B2gitlab/)  
+gitlab配置过程请参考前一篇博客[gitlab+jenkins+harbor持续集成(gitlab篇)](https://276622709.github.io/2021/02/07/k8s%E9%83%A8%E7%BD%B2gitlab/)  
 
 **gitlab配置过程**
 
@@ -365,9 +382,7 @@ build设置shell脚本，模拟自动化流程，这里比较简单，模拟修�
 
 ![](/img/2021-02-15/43.png)
 
-可以看到代码进行了变化，并按照脚本进行执行，当然最终的目的是实现docker项目的自动更新，并更新docker镜像到harbor上，并可以自动部署到k8s生产环境，这些内容将在后面部署了harbor之后，harbor blog中进行更新
-
-
+可以看到代码进行了变化，并按照脚本进行执行，当然最终的目的是实现docker项目的自动更新，并更新docker镜像到harbor上，并可以自动部署到k8s生产环境，这些内容将在后面部署了harbor之后，[gitlab+jenkins+harbor持续集成(harbor篇)]()中进行更新
 
 
 
