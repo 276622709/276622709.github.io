@@ -26,7 +26,7 @@ typora-root-url: ..
 安装reppy模块,并下载py脚本
 ```
 #pip3 install reppy
-#wget https://github.com/276622709/276622709.github.io/code/2020-03-23/sitemap_gen_baidu_auto_push.py
+#wget https://raw.githubusercontent.com/276622709/276622709.github.io/master/code/2020-03-23/sitemap_gen_baidu_auto_push.py
 ```
 其中sitemap_gen_baidu_auto_push.py是自己修改的，你需要修改脚本中的变量curloption,变量值为百度站长中你自己拥有的curl命令脚本  
 ![](/img/2020-03-23/1.png)
