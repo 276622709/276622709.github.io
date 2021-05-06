@@ -1,33 +1,33 @@
 ---
 layout: post
-title: granafa+telegraf+influxdb监控vcenter6.7环境
+title: grafana+telegraf+influxdb监控vcenter6.7环境
 date: 2020-12-22
 author: ZMY
 header-img: ../img/monitor_alarm_background.jpg
 catalog : true
 tags:
    - vcenter6.7监控
-   - granafa
+   - grafana
    - telegraf
    - influxdb
 typora-root-url: ..
 
 ---
-## <img class="original" src='/img/original.png'> granafa+telegraf+influxdb监控vcenter6.7环境
+## <img class="original" src='/img/original.png'> grafana+telegraf+influxdb监控vcenter6.7环境
 
 ## 目的
-通过granafa平台展示vcenter6.7里面的数据
+通过grafana平台展示vcenter6.7里面的数据
 ## 环境描述
 - 1台vcenter appliance+3台esxi6.7+若干台虚拟机组成的vsan环境
 
-- granafa+telegraf+influxdb所在环境为一台centos7.4虚拟机
-  - granafa版本7.3.4  
+- grafana+telegraf+influxdb所在环境为一台centos7.4虚拟机
+  - grafana版本7.3.4  
   - telegraf版本1.16.3
   - influxdb版本1.8.3
   
 ## 安装并配置过程
 
-1.安装granafa
+1.安装grafana
 - 添加yum库
 ```
 # vim /etc/yum.repos.d/grafana.repo
